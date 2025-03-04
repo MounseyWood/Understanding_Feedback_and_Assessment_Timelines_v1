@@ -3,101 +3,142 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BA Fashion Course Timeline</title>
+  <title>BA (Hons) Fashion Program Timeline</title>
   <!-- Load Mermaid from CDN -->
   <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
   <script>
-    // Initialize Mermaid when the page loads
-    mermaid.initialize({ startOnLoad: true });
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: "default"
+    });
   </script>
+  <!-- Tailwind CSS for styling (as used in the grade descriptors page) -->
+  <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #f1f1f1;
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #f1f1f1;
+      padding: 0;
+      margin: 0;
+      color: #333;
+    }
+    .ku-content-wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
       padding: 20px;
     }
-    .container {
-      background: #fff;
-      padding: 20px;
+    .ku-content {
+      background-color: white;
       border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      max-width: 1200px;
-      margin: auto;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      padding: 30px;
+      margin-bottom: 30px;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+      border-bottom: 3px solid #aaaaaa;
+      padding-bottom: 20px;
+    }
+    .footer {
+      text-align: center;
+      margin-top: 30px;
+      padding: 20px;
+      color: #666;
+      font-size: 0.9rem;
+      border-top: 1px solid #eee;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <!-- Mermaid Diagram Container -->
-    <div class="mermaid">
-      gantt
-          dateFormat  YYYY-MM-DD
-          title BA Fashion Course Timeline
+  <div class="ku-content-wrapper">
+    <div class="ku-content">
+      <div class="header">
+        <img src="KSA_secondary_lock-up.png" alt="Kingston School of Art Logo" class="h-6 mb-4 mx-auto block">
+        <h1 class="text-2xl font-bold mb-4">BA (Hons) Fashion Program Timeline</h1>
+        <p>
+          This timeline visualizes your course journey over three years. Note that Year 1 (TB1) is non-weighted, Year 2 (TB2) contributes 20% and Year 3 (TB3) contributes 80% towards your final classification.
+          The timeline is broken into teaching blocks and displays formative feedback deadlines (🔵) and summative submission deadlines (🔴).<br>
+          <strong>Year Quarters:</strong> Year 1 (Q1, Q2); Year 2 (Q1, Q2); Year 3 (Q1, Q2)
+        </p>
+      </div>
 
-          %% Level 4 - Year 1 (Non-weighted)
-          section Level 4 - Year 1 (Non-weighted)
-          Induction (General Induction) : 2024-09-09, 2024-09-20
-          The Sketchbook (FN4004 - Design Process 1) : 2024-09-23, 2024-10-21
-          Formative Feedback (FN4004 - Design Process 1) Milestone : 2024-10-14, 1d
-          Sketchbook Submission (FN4004 - Design Process 1) Milestone : 2024-10-21, 1d
-          Design Process Tutorials (FN4004 - Design Process 1) : 2024-10-22, 2024-12-13
-          Decades Project (FN4004 - Design Process 1) : 2024-10-24, 2024-12-13
-          Enhancement Activity Week (FN4004 - Design Process 1) : 2024-10-28, 2024-11-01
-          Formative Review (FN4004 - Design Process 1) Milestone : 2024-12-02, 1d
-          Toile Development (FN4005 - Design Product 1) : 2025-01-06, 2025-02-14
-          Icons & Muses (FN4004 - Design Process 1) : 2025-01-13, 2025-03-17
-          Mid-Point Formative (FN4005 - Design Product 1) Milestone : 2025-02-10, 1d
-          Enhancement Activity Week (FN4005 - Design Product 1) : 2025-02-17, 2025-02-21
-          Portfolio Development (FN4005 - Design Product 1) : 2025-02-24, 2025-03-17
-          Final Project Submission (FN4005 - Design Product 1) Milestone : 2025-03-17, 1d
-          Historical Themes Research (HA4104 - Design, Style & Image) : 2024-09-23, 2024-11-22
-          Essay Planning (HA4104 - Design, Style & Image) : 2024-11-25, 2024-12-06
-          Essay Writing Period (HA4104 - Design, Style & Image) : 2025-01-06, 2025-02-28
-          CHS Submission (HA4104 - Design, Style & Image) Milestone : 2025-03-03, 1d
-          Continuous Assessment (FN4002 - Professional Practice 1) : 2024-09-01, 2025-06-30
+      <!-- Mermaid Diagram Container -->
+      <div class="mermaid">
+        gantt
+            dateFormat  YYYY-MM-DD
+            title BA (Hons) Fashion Program Timeline – Year Quarters: Year 1 (Q1, Q2); Year 2 (Q1, Q2); Year 3 (Q1, Q2)
 
-          %% Level 5 - Year 2 (Weighted 20%)
-          section Level 5 - Year 2 (Weighted 20%)
-          Induction (General Induction) : 2025-09-09, 2025-09-20
-          Project Kick-Off (FN5001 - Design Process 2) : 2025-09-23, 2025-10-21
-          Formative Feedback (FN5001 - Design Process 2) Milestone : 2025-10-14, 1d
-          Project Submission (FN5001 - Design Process 2) Milestone : 2025-10-21, 1d
-          Design Process Tutorials (FN5001 - Design Process 2) : 2025-10-22, 2025-12-13
-          Major Project Phase 1 (FN5001 - Design Process 2) : 2025-10-24, 2025-12-13
-          Enhancement Activity Week (FN5001 - Design Process 2) : 2025-10-28, 2025-11-01
-          Formative Review (FN5001 - Design Process 2) Milestone : 2025-12-02, 1d
-          Product Development (FN5003 - Design Product 2) : 2026-01-06, 2026-02-14
-          Icons & Muses (FN5001 - Design Process 2) : 2026-01-13, 2026-03-17
-          Mid-Point Formative (FN5003 - Design Product 2) Milestone : 2026-02-10, 1d
-          Enhancement Activity Week (FN5003 - Design Product 2) : 2026-02-17, 2026-02-21
-          Portfolio Development (FN5003 - Design Product 2) : 2026-02-24, 2026-03-17
-          Final Project Submission (FN5003 - Design Product 2) Milestone : 2026-03-17, 1d
-          Historical Themes Research (HA5107 - Critical Issues in Fashion) : 2025-09-23, 2025-11-22
-          Essay Planning (HA5107 - Critical Issues in Fashion) : 2025-11-25, 2025-12-06
-          Essay Writing Period (HA5107 - Critical Issues in Fashion) : 2026-01-06, 2026-02-28
-          CHS Submission (HA5107 - Critical Issues in Fashion) Milestone : 2026-03-03, 1d
-          Continuous Assessment (FN5002 - Professional Practice 2) : 2025-09-01, 2026-06-30
+            %% Level 4 - Year 1 (Non-weighted, TB1)
+            section Level 4 - Year 1 (Non-weighted, TB1)
+            Induction (General Induction) : 2024-09-09, 2024-09-20
+            The Sketchbook (FN4004 - Design Process 1) : 2024-09-23, 2024-10-21
+            Formative Feedback (FN4004 - Design Process 1) (🔵) : 2024-10-14, 1d
+            Sketchbook Submission (FN4004 - Design Process 1) (🔴) : 2024-10-21, 1d
+            Design Process Tutorials (FN4004 - Design Process 1) : 2024-10-22, 2024-12-13
+            Decades Project (FN4004 - Design Process 1) : 2024-10-24, 2024-12-13
+            Enrichment Week (FN4004 - Design Process 1) : 2024-10-28, 2024-11-01
+            Formative Review (FN4004 - Design Process 1) (🔵) : 2024-12-02, 1d
+            Toile Development (FN4005 - Design Product 1) : 2025-01-06, 2025-02-14
+            Icons & Muses (FN4004 - Design Process 1) : 2025-01-13, 2025-03-17
+            Mid-Point Formative (FN4005 - Design Product 1) (🔵) : 2025-02-10, 1d
+            Enrichment Week (FN4005 - Design Product 1) : 2025-02-17, 2025-02-21
+            Portfolio Development (FN4005 - Design Product 1) : 2025-02-24, 2025-03-17
+            Final Project Submission (FN4005 - Design Product 1) (🔴) : 2025-03-17, 1d
+            Historical Themes Research (HA4104 - Design, Style & Image) : 2024-09-23, 2024-11-22
+            Essay Planning (HA4104 - Design, Style & Image) : 2024-11-25, 2024-12-06
+            Essay Writing Period (HA4104 - Design, Style & Image) : 2025-01-06, 2025-02-28
+            CHS Submission (HA4104 - Design, Style & Image) (🔴) : 2025-03-03, 1d
+            Continuous Assessment (FN4002 - Professional Practice 1) : 2024-09-01, 2025-06-30
 
-          %% Level 6 - Year 3 (Weighted 80%)
-          section Level 6 - Year 3 (Weighted 80%)
-          Induction (General Induction) : 2026-09-09, 2026-09-20
-          Project Kick-Off (FN6001 - Design Process 3) : 2026-09-23, 2026-10-21
-          Formative Feedback (FN6001 - Design Process 3) Milestone : 2026-10-14, 1d
-          Project Submission (FN6001 - Design Process 3) Milestone : 2026-10-21, 1d
-          Design Process Tutorials (FN6001 - Design Process 3) : 2026-10-22, 2026-12-13
-          Major Project Phase 1 (FN6001 - Design Process 3) : 2026-10-24, 2026-12-13
-          Enhancement Activity Week (FN6001 - Design Process 3) : 2026-10-28, 2026-11-01
-          Formative Review (FN6001 - Design Process 3) Milestone : 2026-12-02, 1d
-          Product Development (FN6004 - Final Major Project) : 2027-01-06, 2027-02-14
-          Icons & Muses (FN6004 - Final Major Project) : 2027-01-13, 2027-03-17
-          Mid-Point Formative (FN6004 - Final Major Project) Milestone : 2027-02-10, 1d
-          Enhancement Activity Week (FN6004 - Final Major Project) : 2027-02-17, 2027-02-21
-          Portfolio Development (FN6004 - Final Major Project) : 2027-02-24, 2027-03-17
-          Final Project Submission (FN6004 - Final Major Project) Milestone : 2027-03-17, 1d
-          Historical Themes Research (HA6101 - Dissertation) : 2026-09-23, 2026-11-22
-          Essay Planning (HA6101 - Dissertation) : 2026-11-25, 2026-12-06
-          Essay Writing Period (HA6101 - Dissertation) : 2027-01-06, 2027-02-28
-          CHS Submission (HA6101 - Dissertation) Milestone : 2027-03-03, 1d
+            %% Level 5 - Year 2 (Weighted 20%, TB2)
+            section Level 5 - Year 2 (Weighted 20%, TB2)
+            Induction (General Induction) : 2025-09-09, 2025-09-20
+            Project Kick-Off (FN5001 - Design Process 2) : 2025-09-23, 2025-10-21
+            Formative Feedback (FN5001 - Design Process 2) (🔵) : 2025-10-14, 1d
+            Project Submission (FN5001 - Design Process 2) (🔴) : 2025-10-21, 1d
+            Design Process Tutorials (FN5001 - Design Process 2) : 2025-10-22, 2025-12-13
+            Major Project Phase 1 (FN5001 - Design Process 2) : 2025-10-24, 2025-12-13
+            Enrichment Week (FN5001 - Design Process 2) : 2025-10-28, 2025-11-01
+            Formative Review (FN5001 - Design Process 2) (🔵) : 2025-12-02, 1d
+            Product Development (FN5003 - Design Product 2) : 2026-01-06, 2026-02-14
+            Icons & Muses (FN5001 - Design Process 2) : 2026-01-13, 2026-03-17
+            Mid-Point Formative (FN5003 - Design Product 2) (🔵) : 2026-02-10, 1d
+            Enrichment Week (FN5003 - Design Product 2) : 2026-02-17, 2026-02-21
+            Portfolio Development (FN5003 - Design Product 2) : 2026-02-24, 2026-03-17
+            Final Project Submission (FN5003 - Design Product 2) (🔴) : 2026-03-17, 1d
+            Historical Themes Research (HA5107 - Critical Issues in Fashion) : 2025-09-23, 2025-11-22
+            Essay Planning (HA5107 - Critical Issues in Fashion) : 2025-11-25, 2025-12-06
+            Essay Writing Period (HA5107 - Critical Issues in Fashion) : 2026-01-06, 2026-02-28
+            CHS Submission (HA5107 - Critical Issues in Fashion) (🔴) : 2026-03-03, 1d
+            Continuous Assessment (FN5002 - Professional Practice 2) : 2025-09-01, 2026-06-30
+
+            %% Level 6 - Year 3 (Weighted 80%, TB3)
+            section Level 6 - Year 3 (Weighted 80%, TB3)
+            Induction (General Induction) : 2026-09-09, 2026-09-20
+            Project Kick-Off (FN6001 - Design Process 3) : 2026-09-23, 2026-10-21
+            Formative Feedback (FN6001 - Design Process 3) (🔵) : 2026-10-14, 1d
+            Project Submission (FN6001 - Design Process 3) (🔴) : 2026-10-21, 1d
+            Design Process Tutorials (FN6001 - Design Process 3) : 2026-10-22, 2026-12-13
+            Major Project Phase 1 (FN6001 - Design Process 3) : 2026-10-24, 2026-12-13
+            Enrichment Week (FN6001 - Design Process 3) : 2026-10-28, 2026-11-01
+            Formative Review (FN6001 - Design Process 3) (🔵) : 2026-12-02, 1d
+            Product Development (FN6004 - Final Major Project) : 2027-01-06, 2027-02-14
+            Icons & Muses (FN6004 - Final Major Project) : 2027-01-13, 2027-03-17
+            Mid-Point Formative (FN6004 - Final Major Project) (🔵) : 2027-02-10, 1d
+            Enrichment Week (FN6004 - Final Major Project) : 2027-02-17, 2027-02-21
+            Portfolio Development (FN6004 - Final Major Project) : 2027-02-24, 2027-03-17
+            Final Project Submission (FN6004 - Final Major Project) (🔴) : 2027-03-17, 1d
+            Historical Themes Research (HA6101 - Dissertation) : 2026-09-23, 2026-11-22
+            Essay Planning (HA6101 - Dissertation) : 2026-11-25, 2026-12-06
+            Essay Writing Period (HA6101 - Dissertation) : 2027-01-06, 2027-02-28
+            CHS Submission (HA6101 - Dissertation) (🔴) : 2027-03-03, 1d
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>Kingston School of Art - BA (Hons) Fashion Program – Learning Outcomes, Feedback and Assessment KnowledgeBase</p>
+      <p>© 2025 Kingston University</p>
     </div>
   </div>
 </body>
