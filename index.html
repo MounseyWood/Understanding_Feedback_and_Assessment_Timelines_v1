@@ -58,7 +58,7 @@
     .year-tabs {
       display: flex;
       margin-bottom: 1.5rem;
-      border-bottom: 1px solid #dee2e6;
+      border-bottom: 1px solid #f5f5f5;
     }
     
     .year-tab {
@@ -66,7 +66,7 @@
       padding: 0.75rem;
       font-weight: 600;
       text-align: center;
-      border: 2px solid #dee2e6;
+      border: 2px solid #f5f5f5;
       background-color: white;
       cursor: pointer;
       transition: background-color 0.2s ease;
@@ -77,8 +77,8 @@
     }
     
     .year-tab.active {
-      background-color: #e9ecef;
-      border-color: #adb5bd;
+      background-color: #FFED00;
+      border-color: #f5f5f5;
     }
     
     /* Year sections */
@@ -124,7 +124,7 @@
     
     .formative-color {
       background-color: #FFED00;
-      border-color: #d97706;
+      border-color: #b91c1c;
     }
     
     .summative-color {
@@ -133,8 +133,8 @@
     }
     
     .break-color {
-      background-color: #f1f5f9;
-      border-color: #cbd5e1;
+      background-color: #f5f5f5;
+      border-color: #f8f8f8;
     }
     
     /* Modal popup */
@@ -240,7 +240,7 @@
       position: relative;
       height: 2rem;
       margin-bottom: 1.5rem;
-      border-bottom: 1px solid #e5e7eb;
+      border-bottom: 1px solid #f8f8f8;
     }
     
     .week-marker {
@@ -250,12 +250,12 @@
     
     .week-marker-line {
       height: 100%;
-      border-left: 1px solid #d1d5db;
+      border-left: 1px solid #f8f8f8;
     }
     
     .week-marker-label {
       font-size: 0.75rem;
-      color: #6b7280;
+      color: #f8f8f8;
       margin-top: 0.25rem;
     }
     
@@ -277,7 +277,7 @@
       position: absolute;
       top: 0;
       height: 100%;
-      background-color: #f1f5f9;
+      background-color: #f5f5f5;
       opacity: 0.7;
       z-index: 0;
     }
@@ -319,7 +319,7 @@
     
     .timeline-item.formative {
       background-color: #FFED00;
-      border-color: #d97706;
+      border-color: #b91c1c;
       height: 1.5rem;
       width: 1.5rem !important;
       border-radius: 50%;
@@ -501,17 +501,17 @@
       <!-- Year sections -->
       <div id="section-year1" class="year-section active">
         <h2 class="year-title">Year 1: Non-weighted</h2>
-        <p>Allowing for experimentation and exploration without high stakes.</p>
+        <p>This year focuses on building core skills and allows experimentation and exploration without affecting your final degree classification.</p>
       </div>
       
       <div id="section-year2" class="year-section">
         <h2 class="year-title">Year 2: 20% weighted</h2>
-        <p>Contributes 20% to your final mark, reflecting the adoption of Professional Practice.</p>
+        <p>This year contributes 20% to your final mark, reflecting the adoption of professional practices and industry standards.</p>
       </div>
       
       <div id="section-year3" class="year-section">
         <h2 class="year-title">Year 3: 80% weighted</h2>
-        <p>Carries the majority of the weight at 80%, emphasising the importance of your final year work.</p>
+        <p>This year carries the majority of the weight at 80%, emphasizing the importance of your final project, portfolio and industry readiness.</p>
       </div>
       
       <!-- Legend -->
@@ -596,7 +596,8 @@
             { id: 'project1', name: 'Project One (FN4004)', start: 3, duration: 9, type: 'project' },
             { id: 'formative1', name: 'Formative Feedback (FN4004)', start: 9, duration: 0, type: 'formative', 
               link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
-              details: "Mid-project feedback session focusing on your initial design concepts and research direction." },
+              details: "Mid-project feedback to guide your development process. This is an opportunity to receive constructive critique on your work in progress.
+              <p> Expectations: Bring your sketchbook, initial designs, and research materials. Be prepared to discuss your concept development and receive peer feedback.</p>" },
             { id: 'summative1', name: 'Summative Assessment (FN4004)', start: 12, duration: 0, type: 'summative', 
               link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
               details: "Final assessment of your first project work including research, development, and outcomes." },
