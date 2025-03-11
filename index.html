@@ -309,7 +309,7 @@
     .timeline-item.project {
       background-color: transparent; /* Remove background */
       border-top: 2px solid #adb5bd; /* Use a horizontal line instead of a box */
-      height: 2px;
+      height: 6px; /* Increased to 6px as requested */
       border-left: none;
       border-right: none;
       border-bottom: none;
@@ -321,11 +321,11 @@
     .timeline-item.project::after {
       content: "";
       position: absolute;
-      width: 6px;
-      height: 6px;
+      width: 8px;
+      height: 8px;
       background-color: #333;
       border-radius: 50%;
-      top: -2px; /* Center on the line */
+      top: -1px; /* Adjust for the new height */
     }
     
     .timeline-item.project::before {
@@ -873,19 +873,21 @@
                 showModal(item);
               });
               
-              // Add label to the left of the milestone
+              // Add label precisely aligned with the milestone
               const label = document.createElement('div');
               label.className = 'milestone-label';
               label.textContent = item.name;
+              label.style.left = position.left; // Align with the milestone
               
               row.appendChild(itemElement);
               row.appendChild(label);
             }
           } else {
-            // Add label below the project line
+            // Add label below the project line, aligned with the start of the line
             const outerLabel = document.createElement('div');
             outerLabel.className = 'project-label';
             outerLabel.textContent = item.name;
+            outerLabel.style.left = position.left; // Align with the start of the line
             
             row.appendChild(itemElement);
             row.appendChild(outerLabel);
