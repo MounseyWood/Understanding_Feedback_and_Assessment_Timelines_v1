@@ -242,7 +242,6 @@
     }
     
     .block-label {
-      flex: 1;
       height: 1.5rem;
       display: flex;
       align-items: center;
@@ -250,6 +249,19 @@
       background-color: #e9ecef; /* Changed from yellow to gray */
       border: 1px solid #dee2e6;
       font-size: 0.875rem;
+    }
+    
+    /* Adjust width of teaching blocks to match actual weeks */
+    .block-label:nth-child(1) {
+      flex: 13; /* Teaching Block 1: Weeks 0-12 */
+    }
+    
+    .block-label:nth-child(2) {
+      flex: 12; /* Teaching Block 2: Weeks 13-24 */
+    }
+    
+    .block-label:nth-child(3) {
+      flex: 8; /* Teaching Block 3: 8 weeks */
     }
     
     .week-markers {
@@ -370,15 +382,15 @@
       text-overflow: ellipsis;
     }
     
-    /* Modified to place label BELOW the milestone, aligned left */
+    /* Modified to place label BELOW and LEFT of the milestone */
     .milestone-label {
       position: absolute;
       top: 4px; /* Just 2px below the icon */
-      left: 0; /* Align to the left of the icon */
       font-size: 0.75rem;
       white-space: nowrap;
       text-align: left;
       color: #333;
+      left: 0; /* Align to left of the icon */
     }
     
     /* Project label - appears below project lines */
@@ -451,8 +463,8 @@
     
     .support-button {
       padding: 0.75rem 1.5rem;
-      background-color: #0092D4;
-      color: white;
+      background-color: #FFED00;
+      color: #000;
       border: none;
       border-radius: 0.25rem;
       font-weight: bold;
@@ -463,7 +475,7 @@
     }
     
     .support-button:hover {
-      background-color: #0078ad;
+      background-color: #e6d500;
     }
     
     /* Footer */
@@ -651,123 +663,145 @@
         year1: {
           title: "Year 1: Non-weighted",
           description: "Allowing for experimentation and exploration without high stakes.",
-          weeks: 45,
+          weeks: 33, // Total teaching weeks plus breaks
           items: [
-            { id: 'induction', name: 'Induction', start: 1, duration: 2, type: 'project' },
-            { id: 'project1', name: 'Project One (FN4004)', start: 3, duration: 9, type: 'project' },
-            { id: 'formative1', name: 'Formative Feedback (FN4004)', start: 9, duration: 0, type: 'formative', 
+            { id: 'induction', name: 'Induction', start: 0, duration: 1, type: 'project' },
+            { id: 'project1', name: 'Project One (FN4004)', start: 1, duration: 5, type: 'project' },
+            { id: 'enrichment1', name: 'Enrichment Week', start: 6, duration: 1, type: 'project' },
+            { id: 'project2', name: 'Project Two (FN4004)', start: 7, duration: 5, type: 'project' },
+            { id: 'formative1', name: 'Formative Feedback (FN4004)', start: 5, duration: 0, type: 'formative', 
               link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
               details: "Mid-project feedback to guide your development process. This is an opportunity to receive constructive critique on your work in progress.<br><br><span class='expectations-text'>Expectations:</span> Bring your sketchbook, initial designs, and research materials. Be prepared to discuss your concept development and receive peer feedback.<br><br><span class='always-refer-text'>Always refer to the project brief for definitive guidance and expectations.</span>" },
             { id: 'summative1', name: 'Summative Assessment (FN4004)', start: 12, duration: 0, type: 'summative', 
               link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
               details: "Final assessment of your first project work including research, development, and outcomes.<br><br><span class='expectations-text'>Expectations:</span> Submit all required deliverables as specified in the brief. Ensure your work demonstrates research, development, and final outcomes that meet the learning objectives.<br><br><span class='always-refer-text'>Always refer to the project brief for definitive guidance and expectations.</span>" },
-            { id: 'project2', name: 'Project Two (FN4004)', start: 12, duration: 10, type: 'project' },
-            { id: 'formative2', name: 'Formative Feedback (FN4004)', start: 20, duration: 0, type: 'formative', 
+            { id: 'winterBreak', name: 'Winter Vacation', start: 13, duration: 3, type: 'project' },
+            { id: 'project3', name: 'Project Three (FN4004)', start: 16, duration: 2, type: 'project' },
+            { id: 'enrichment2', name: 'Enrichment Week', start: 18, duration: 1, type: 'project' },
+            { id: 'project4', name: 'Project Four (FN4005)', start: 19, duration: 5, type: 'project' },
+            { id: 'formative2', name: 'Formative Feedback (FN4004)', start: 17, duration: 0, type: 'formative', 
               link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
-              details: "Development feedback for your second project to help refine your direction.<br><br><span class='expectations-text'>Expectations:</span> Bring your design development work and be prepared to discuss your progress and challenges.<br><br><span class='always-refer-text'>Always refer to the project brief for definitive guidance and expectations.</span>" },
-            { id: 'toile', name: 'Toile Development (FN4005)', start: 26, duration: 8, type: 'project' },
-            { id: 'project3', name: 'Project Three (FN4004)', start: 26, duration: 12, type: 'project' },
-            { id: 'formative3', name: 'Formative Feedback (FN4005)', start: 32, duration: 0, type: 'formative', 
+              details: "Development feedback for your project to help refine your direction.<br><br><span class='expectations-text'>Expectations:</span> Bring your design development work and be prepared to discuss your progress and challenges.<br><br><span class='always-refer-text'>Always refer to the project brief for definitive guidance and expectations.</span>" },
+            { id: 'toile', name: 'Toile Development (FN4005)', start: 19, duration: 5, type: 'project' },
+            { id: 'formative3', name: 'Formative Feedback (FN4005)', start: 22, duration: 0, type: 'formative', 
               link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
               details: "Technical feedback on your toile development and construction techniques.<br><br><span class='expectations-text'>Expectations:</span> Present your toile and technical samples. Be prepared to discuss construction decisions and technical challenges.<br><br><span class='always-refer-text'>Always refer to the project brief for definitive guidance and expectations.</span>" },
-            { id: 'portfolio', name: 'Portfolio Development (FN4005)', start: 34, duration: 4, type: 'project' },
-            { id: 'summative2', name: 'Summative Submission (FN4005)', start: 38, duration: 0, type: 'summative', 
+            { id: 'summative2', name: 'Summative Assessment (FN4005)', start: 24, duration: 0, type: 'summative', 
               link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
-              details: "Final portfolio assessment including technical work and completed projects.<br><br><span class='expectations-text'>Expectations:</span> Submit a complete portfolio of your technical development work and final outcomes. Ensure all requirements from the brief are addressed.<br><br><span class='always-refer-text'>Always refer to the project brief for definitive guidance and expectations.</span>" },
-            { id: 'historical', name: 'Historical Themes Research (HA4104)', start: 3, duration: 13, type: 'project' },
+              details: "Final assessment of your technical development work.<br><br><span class='expectations-text'>Expectations:</span> Submit all required technical samples, toiles, and documentation as specified in the brief.<br><br><span class='always-refer-text'>Always refer to the project brief for definitive guidance and expectations.</span>" },
+            { id: 'springBreak', name: 'Spring Break', start: 25, duration: 3, type: 'project' },
+            { id: 'portfolio', name: 'Portfolio Development (FN4005)', start: 28, duration: 3, type: 'project' },
+            { id: 'historical', name: 'Historical Themes Research (HA4104)', start: 1, duration: 12, type: 'project' },
             { id: 'essayPlanning', name: 'Essay Planning (HA4104)', start: 16, duration: 6, type: 'project' },
-            { id: 'essayWriting', name: 'Essay Writing Period (HA4104)', start: 26, duration: 10, type: 'project' },
-            { id: 'chsSubmission', name: 'CHS Submission (HA4104)', start: 36, duration: 0, type: 'summative', 
+            { id: 'essayWriting', name: 'Essay Writing Period (HA4104)', start: 22, duration: 6, type: 'project' },
+            { id: 'finalSubmission', name: 'Final Submissions', start: 31, duration: 0, type: 'summative', 
+              link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
+              details: "Final portfolio assessment including all year's work.<br><br><span class='expectations-text'>Expectations:</span> Submit a comprehensive portfolio demonstrating your technical, creative, and academic development throughout the year.<br><br><span class='always-refer-text'>Always refer to the project brief for definitive guidance and expectations.</span>" },
+            { id: 'chsSubmission', name: 'CHS Submission (HA4104)', start: 28, duration: 0, type: 'summative', 
               link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
               details: "Final submission of your written Cultural & Historical Studies essay.<br><br><span class='expectations-text'>Expectations:</span> Submit a properly formatted academic essay addressing the assigned topic. Ensure proper citations, bibliography, and adherence to word count.<br><br><span class='always-refer-text'>Always refer to the project brief for definitive guidance and expectations.</span>" },
           ],
           breaks: [
-            { name: 'TB1 Enrichment Week', start: 8, duration: 1 },
-            { name: 'Winter Break', start: 22, duration: 4 },
-            { name: 'TB2 Enrichment Week', start: 33, duration: 1 },
-            { name: 'Summer Break', start: 38, duration: 7 }
+            { name: 'Enrichment Week (TB1)', start: 6, duration: 1 },
+            { name: 'Winter Break', start: 13, duration: 3 },
+            { name: 'Enrichment Week (TB2)', start: 18, duration: 1 },
+            { name: 'Spring Break', start: 25, duration: 3 }
           ]
         },
         year2: {
           title: "Year 2: 20% weighted",
           description: "Contributes 20% to your final mark, reflecting the adoption of Professional Practice.",
-          weeks: 45,
+          weeks: 33, // Total teaching weeks plus breaks
           items: [
-            { id: 'induction2', name: 'Induction', start: 1, duration: 2, type: 'project' },
-            { id: 'project1_y2', name: 'Project One (FN5001)', start: 3, duration: 9, type: 'project' },
-            { id: 'formative1_y2', name: 'Formative Feedback (FN5001)', start: 9, duration: 0, type: 'formative', 
+            { id: 'induction2', name: 'Induction', start: 0, duration: 1, type: 'project' },
+            { id: 'project1_y2', name: 'Project One (FN5001)', start: 1, duration: 5, type: 'project' },
+            { id: 'enrichment1_y2', name: 'Enrichment Week', start: 6, duration: 1, type: 'project' },
+            { id: 'project2_y2', name: 'Project Two (FN5001)', start: 7, duration: 5, type: 'project' },
+            { id: 'formative1_y2', name: 'Formative Feedback (FN5001)', start: 5, duration: 0, type: 'formative', 
               link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
               details: "Mid-project feedback focusing on your design development and concept research.<br><br><span class='expectations-text'>Expectations:</span> Present your research, concept development, and initial designs. Be prepared to explain your design rationale and research methodology.<br><br><span class='always-refer-text'>Always refer to the project brief for definitive guidance and expectations.</span>" },
             { id: 'summative1_y2', name: 'Project Submission (FN5001)', start: 12, duration: 0, type: 'summative', 
               link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
               details: "Assessment of your project outcomes, contributing to your 20% Year 2 weighting.<br><br><span class='expectations-text'>Expectations:</span> Submit all project components as specified in the brief. Ensure your work demonstrates progress in both technical and conceptual development.<br><br><span class='always-refer-text'>Always refer to the project brief for definitive guidance and expectations.</span>" },
-            { id: 'designTutorials', name: 'Design Process Tutorials (FN5001)', start: 12, duration: 10, type: 'project' },
-            { id: 'majorProject1', name: 'Major Project Phase 1 (FN5001)', start: 12, duration: 10, type: 'project' },
-            { id: 'formativeReview', name: 'Formative Review (FN5001)', start: 20, duration: 0, type: 'formative', 
+            { id: 'winterBreak_y2', name: 'Winter Vacation', start: 13, duration: 3, type: 'project' },
+            { id: 'designTutorials', name: 'Design Process Tutorials (FN5001)', start: 16, duration: 2, type: 'project' },
+            { id: 'enrichment2_y2', name: 'Enrichment Week', start: 18, duration: 1, type: 'project' },
+            { id: 'majorProject1', name: 'Major Project Phase 1 (FN5001)', start: 19, duration: 5, type: 'project' },
+            { id: 'formativeReview', name: 'Formative Review (FN5001)', start: 17, duration: 0, type: 'formative', 
               link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
               details: "Comprehensive review of your work to date with industry feedback.<br><br><span class='expectations-text'>Expectations:</span> Present your portfolio of work to date and be prepared to discuss your design direction with industry professionals. Consider how to implement their feedback in your ongoing work.<br><br><span class='always-refer-text'>Always refer to the project brief for definitive guidance and expectations.</span>" },
-            { id: 'productDev', name: 'Product Development (FN5003)', start: 26, duration: 8, type: 'project' },
-            { id: 'iconsMuses', name: 'Icons & Muses (FN5001)', start: 26, duration: 12, type: 'project' },
-            { id: 'midPoint', name: 'Mid-Point Formative (FN5003)', start: 32, duration: 0, type: 'formative', 
+            { id: 'productDev', name: 'Product Development (FN5003)', start: 19, duration: 5, type: 'project' },
+            { id: 'midPoint', name: 'Mid-Point Formative (FN5003)', start: 22, duration: 0, type: 'formative', 
               link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
               details: "Technical and creative feedback on your product development work.<br><br><span class='expectations-text'>Expectations:</span> Present your technical samples, prototypes, and development work. Be ready to discuss manufacturing considerations and material choices.<br><br><span class='always-refer-text'>Always refer to the project brief for definitive guidance and expectations.</span>" },
-            { id: 'portfolioDev_y2', name: 'Portfolio Development (FN5003)', start: 34, duration: 4, type: 'project' },
-            { id: 'finalSubmission', name: 'Final Project Submission (FN5003)', start: 38, duration: 0, type: 'summative', 
+            { id: 'finalSubmission_y2', name: 'Final Project Submission (FN5003)', start: 24, duration: 0, type: 'summative', 
               link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
               details: "Final assessment of your Year 2 projects and portfolio.<br><br><span class='expectations-text'>Expectations:</span> Submit a comprehensive portfolio demonstrating your technical, creative, and professional development throughout the year. Include all project outcomes as specified in the brief.<br><br><span class='always-refer-text'>Always refer to the project brief for definitive guidance and expectations.</span>" },
-            { id: 'historical_y2', name: 'Historical Themes Research (HA5107)', start: 3, duration: 13, type: 'project' },
+            { id: 'springBreak_y2', name: 'Spring Break', start: 25, duration: 3, type: 'project' },
+            { id: 'portfolioDev_y2', name: 'Portfolio Development (FN5003)', start: 28, duration: 3, type: 'project' },
+            { id: 'historical_y2', name: 'Historical Themes Research (HA5107)', start: 1, duration: 12, type: 'project' },
             { id: 'essayPlanning_y2', name: 'Essay Planning (HA5107)', start: 16, duration: 6, type: 'project' },
-            { id: 'essayWriting_y2', name: 'Essay Writing Period (HA5107)', start: 26, duration: 10, type: 'project' },
-            { id: 'chsSubmission_y2', name: 'CHS Submission (HA5107)', start: 36, duration: 0, type: 'summative', 
+            { id: 'essayWriting_y2', name: 'Essay Writing Period (HA5107)', start: 22, duration: 6, type: 'project' },
+            { id: 'portfolioSubmission_y2', name: 'Final Portfolio Submission', start: 31, duration: 0, type: 'summative', 
+              link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
+              details: "Final portfolio submission for Year 2.<br><br><span class='expectations-text'>Expectations:</span> Submit a comprehensive and professional portfolio that demonstrates your development throughout the year. Include all required components as specified in the brief.<br><br><span class='always-refer-text'>Always refer to the project brief for definitive guidance and expectations.</span>" },
+            { id: 'chsSubmission_y2', name: 'CHS Submission (HA5107)', start: 28, duration: 0, type: 'summative', 
               link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
               details: "Final submission of your Year 2 Cultural & Historical Studies essay.<br><br><span class='expectations-text'>Expectations:</span> Submit a well-researched academic essay with proper citations and bibliography. Your writing should demonstrate increased analytical sophistication from Year 1.<br><br><span class='always-refer-text'>Always refer to the project brief for definitive guidance and expectations.</span>" },
           ],
           breaks: [
-            { name: 'TB1 Enrichment Week', start: 8, duration: 1 },
-            { name: 'Winter Break', start: 22, duration: 4 },
-            { name: 'TB2 Enrichment Week', start: 33, duration: 1 },
-            { name: 'Summer Break', start: 38, duration: 7 }
+            { name: 'Enrichment Week (TB1)', start: 6, duration: 1 },
+            { name: 'Winter Break', start: 13, duration: 3 },
+            { name: 'Enrichment Week (TB2)', start: 18, duration: 1 },
+            { name: 'Spring Break', start: 25, duration: 3 }
           ]
         },
         year3: {
           title: "Year 3: 80% weighted",
           description: "Carries the majority of the weight at 80%, emphasising the importance of your final year work.",
-          weeks: 45,
+          weeks: 33, // Total teaching weeks plus breaks
           items: [
-            { id: 'induction3', name: 'Induction', start: 1, duration: 2, type: 'project' },
-            { id: 'project1_y3', name: 'Project One (FN6001)', start: 3, duration: 9, type: 'project' },
-            { id: 'formative1_y3', name: 'Formative Feedback (FN6001)', start: 9, duration: 0, type: 'formative', 
+            { id: 'induction3', name: 'Induction', start: 0, duration: 1, type: 'project' },
+            { id: 'project1_y3', name: 'Project One (FN6001)', start: 1, duration: 5, type: 'project' },
+            { id: 'enrichment1_y3', name: 'Enrichment Week', start: 6, duration: 1, type: 'project' },
+            { id: 'project2_y3', name: 'Project Two (FN6001)', start: 7, duration: 5, type: 'project' },
+            { id: 'formative1_y3', name: 'Formative Feedback (FN6001)', start: 5, duration: 0, type: 'formative', 
               link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
               details: "Critical feedback on your final year project direction and concept development.<br><br><span class='expectations-text'>Expectations:</span> Present a thorough exploration of your research, concept development, and design direction. Be prepared to articulate your unique design vision and how it fits into the contemporary fashion landscape.<br><br><span class='always-refer-text'>Always refer to the project brief for definitive guidance and expectations.</span>" },
             { id: 'summative1_y3', name: 'Project Submission (FN6001)', start: 12, duration: 0, type: 'summative', 
               link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
               details: "Assessment of your first final-year project, contributing to your 80% weighting.<br><br><span class='expectations-text'>Expectations:</span> Submit a professional-quality project that demonstrates your readiness for industry. Your work should reflect a personal design philosophy and innovative approach.<br><br><span class='always-refer-text'>Always refer to the project brief for definitive guidance and expectations.</span>" },
-            { id: 'designTutorials_y3', name: 'Design Process Tutorials (FN6001)', start: 12, duration: 10, type: 'project' },
-            { id: 'majorProject1_y3', name: 'Major Project Phase 1 (FN6001)', start: 12, duration: 10, type: 'project' },
-            { id: 'formativeReview_y3', name: 'Formative Review (FN6001)', start: 20, duration: 0, type: 'formative', 
+            { id: 'winterBreak_y3', name: 'Winter Vacation', start: 13, duration: 3, type: 'project' },
+            { id: 'designTutorials_y3', name: 'Design Process Tutorials (FN6001)', start: 16, duration: 2, type: 'project' },
+            { id: 'enrichment2_y3', name: 'Enrichment Week', start: 18, duration: 1, type: 'project' },
+            { id: 'majorProject1_y3', name: 'Major Project Phase 1 (FN6001)', start: 19, duration: 5, type: 'project' },
+            { id: 'formativeReview_y3', name: 'Formative Review (FN6001)', start: 17, duration: 0, type: 'formative', 
               link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
               details: "Industry-facing review of your collection development and professional portfolio.<br><br><span class='expectations-text'>Expectations:</span> Present your collection concept, development, and professional portfolio to industry representatives. Be prepared to discuss your work in a professional context and respond to industry-level feedback.<br><br><span class='always-refer-text'>Always refer to the project brief for definitive guidance and expectations.</span>" },
-            { id: 'productDev_y3', name: 'Product Development (FN6004)', start: 26, duration: 8, type: 'project' },
-            { id: 'iconsMuses_y3', name: 'Icons & Muses (FN6004)', start: 26, duration: 12, type: 'project' },
-            { id: 'midPoint_y3', name: 'Mid-Point Formative (FN6004)', start: 32, duration: 0, type: 'formative', 
+            { id: 'productDev_y3', name: 'Product Development (FN6004)', start: 19, duration: 5, type: 'project' },
+            { id: 'midPoint_y3', name: 'Mid-Point Formative (FN6004)', start: 22, duration: 0, type: 'formative', 
               link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
               details: "Final development feedback before your summative assessment.<br><br><span class='expectations-text'>Expectations:</span> Present your nearly-completed collection, including garments, technical files, and professional portfolio. Use this opportunity to make final refinements before submission.<br><br><span class='always-refer-text'>Always refer to the project brief for definitive guidance and expectations.</span>" },
-            { id: 'portfolioDev_y3', name: 'Portfolio Development (FN6004)', start: 34, duration: 4, type: 'project' },
-            { id: 'finalSubmission_y3', name: 'Final Project Submission (FN6004)', start: 38, duration: 0, type: 'summative', 
+            { id: 'finalSubmission_y3', name: 'Final Project Assessment', start: 24, duration: 0, type: 'summative', 
               link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
-              details: "Final major project submission that forms the largest part of your degree classification.<br><br><span class='expectations-text'>Expectations:</span> Submit your complete final collection, professional portfolio, and all supporting documentation. Your work should be presentation-ready and demonstrate industry standards in all aspects.<br><br><span class='always-refer-text'>Always refer to the project brief for definitive guidance and expectations.</span>" },
-            { id: 'historical_y3', name: 'Historical Themes Research (HA6101)', start: 3, duration: 13, type: 'project' },
-            { id: 'essayPlanning_y3', name: 'Essay Planning (HA6101)', start: 16, duration: 6, type: 'project' },
-            { id: 'essayWriting_y3', name: 'Essay Writing Period (HA6101)', start: 26, duration: 10, type: 'project' },
-            { id: 'chsSubmission_y3', name: 'CHS Submission (HA6101)', start: 36, duration: 0, type: 'summative', 
+              details: "Final assessment of your major project work.<br><br><span class='expectations-text'>Expectations:</span> Submit all required components as specified in the brief. Your work should demonstrate professional standards and be presentation-ready.<br><br><span class='always-refer-text'>Always refer to the project brief for definitive guidance and expectations.</span>" },
+            { id: 'springBreak_y3', name: 'Spring Break', start: 25, duration: 3, type: 'project' },
+            { id: 'portfolioDev_y3', name: 'Final Collection & Portfolio', start: 28, duration: 3, type: 'project' },
+            { id: 'historical_y3', name: 'Dissertation Research (HA6101)', start: 1, duration: 12, type: 'project' },
+            { id: 'essayPlanning_y3', name: 'Dissertation Planning (HA6101)', start: 16, duration: 6, type: 'project' },
+            { id: 'essayWriting_y3', name: 'Dissertation Writing (HA6101)', start: 22, duration: 6, type: 'project' },
+            { id: 'finalShow', name: 'Degree Show', start: 31, duration: 0, type: 'summative', 
+              link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
+              details: "Final exhibition of your work and degree classification.<br><br><span class='expectations-text'>Expectations:</span> Present your complete collection and portfolio at professional industry standards. Your presentation should demonstrate your readiness to enter the fashion industry.<br><br><span class='always-refer-text'>Always refer to the project brief for definitive guidance and expectations.</span>" },
+            { id: 'chsSubmission_y3', name: 'Dissertation Submission (HA6101)', start: 28, duration: 0, type: 'summative', 
               link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
               details: "Final submission of your Year 3 Cultural & Historical Studies dissertation.<br><br><span class='expectations-text'>Expectations:</span> Submit a dissertation that demonstrates advanced research skills, critical analysis, and academic writing at degree level. Your work should make an original contribution to the field.<br><br><span class='always-refer-text'>Always refer to the project brief for definitive guidance and expectations.</span>" },
           ],
           breaks: [
-            { name: 'TB1 Enrichment Week', start: 8, duration: 1 },
-            { name: 'Winter Break', start: 22, duration: 4 },
-            { name: 'TB2 Enrichment Week', start: 33, duration: 1 },
-            { name: 'Summer Break', start: 38, duration: 7 }
+            { name: 'Enrichment Week (TB1)', start: 6, duration: 1 },
+            { name: 'Winter Break', start: 13, duration: 3 },
+            { name: 'Enrichment Week (TB2)', start: 18, duration: 1 },
+            { name: 'Spring Break', start: 25, duration: 3 }
           ]
         }
       };
@@ -915,14 +949,11 @@
                 showModal(item);
               });
               
-              // Calculate the exact position for label to be directly beneath the icon
-              const leftPos = position.leftNumeric;
-              
-              // Add label precisely aligned with the milestone
+              // Add label precisely aligned with the left of the milestone
               const label = document.createElement('div');
               label.className = 'milestone-label';
               label.textContent = item.name;
-              label.style.left = `${leftPos - 0.5}%`; // Align to be directly beneath the icon
+              label.style.left = position.left; // Align to the left edge of the icon
               
               row.appendChild(itemElement);
               row.appendChild(label);
