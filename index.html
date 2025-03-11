@@ -33,13 +33,6 @@
       margin-bottom: 30px;
     }
     
-    .header {
-      text-align: center;
-      margin-bottom: 30px;
-      border-bottom: 3px solid #aaaaaa;
-      padding-bottom: 20px;
-    }
-    
     h1 {
       font-size: 1.75rem;
       text-align: center;
@@ -52,6 +45,13 @@
     
     .text-center {
       text-align: center;
+    }
+    
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+      border-bottom: 3px solid #aaaaaa;
+      padding-bottom: 20px;
     }
     
     /* Year tabs */
@@ -196,17 +196,16 @@
     .resource-link {
       display: inline-block;
       margin-top: 1rem;
-      background-color: #FFED00;
-      color: #000;
+      background-color: #2563eb;
+      color: white;
       padding: 0.5rem 1rem;
       border-radius: 0.25rem;
       text-decoration: none;
       font-weight: 500;
-      border: 2px solid #000;
     }
     
     .resource-link:hover {
-      background-color: #e6d500;
+      background-color: #1d4ed8;
     }
     
     /* Timeline visualization */
@@ -349,12 +348,14 @@
       text-overflow: ellipsis;
     }
     
+    /* Modified to place label BELOW the milestone, not above */
     .milestone-label {
       position: absolute;
+      bottom: -1.5rem; /* Changed from top to bottom */
       font-size: 0.75rem;
       white-space: nowrap;
-      bottom: -1.5rem;
-      left: 0;
+      text-align: center; /* Ensure text is centered below the marker */
+      transform: translateX(-50%); /* Center the label */
     }
     
     /* Quote */
@@ -728,7 +729,7 @@
       function setActiveYear(year) {
         activeYear = year;
         
-        // Update tabs - all with the same gray style when active
+        // Update tabs
         tabYear1.className = 'year-tab' + (year === 'year1' ? ' active' : '');
         tabYear2.className = 'year-tab' + (year === 'year2' ? ' active' : '');
         tabYear3.className = 'year-tab' + (year === 'year3' ? ' active' : '');
@@ -813,7 +814,7 @@
           itemElement.style.left = position.left;
           itemElement.style.width = position.width;
           
-          // For milestone items (formative and summative)
+          // For milestone items (zero duration)
           if (item.duration === 0) {
             // Add click handler for formative and summative assessments
             if (item.type === 'formative' || item.type === 'summative') {
@@ -822,12 +823,12 @@
                 showModal(item);
               });
               
-              // Add label below the icon
+              // Add label
               const label = document.createElement('div');
               label.className = 'milestone-label';
               label.textContent = item.name;
               label.style.left = position.left;
-              row.appendChild(label);
+              itemElement.appendChild(label); // Add the label as a child of the milestone for better positioning
             }
           } else {
             // Add label for regular items
