@@ -4,20 +4,50 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>BA (Hons) Fashion Program Timeline</title>
-  <!-- Load Mermaid from CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <!-- Load Mermaid -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.min.js"></script>
   <script>
     mermaid.initialize({
       startOnLoad: true,
-      theme: "default"
+      securityLevel: 'loose', // Allows interaction
+      themeVariables: {
+        primaryColor: '#FFED00',
+        primaryTextColor: '#000000',
+        primaryBorderColor: '#000000',
+        edgeLabelBackground: '#ffffff',
+        tertiaryColor: '#f8f9fa',
+        secondaryColor: '#333333',
+        noteBkgColor: '#e2e3e5',
+        noteTextColor: '#333333',
+        noteBorderColor: '#ced4da',
+        lineColor: '#6c757d',
+        textColor: '#000000',
+        mainBkg: '#ffffff',
+        altBkg: '#f5f5f5',
+        critBkg: '#FFED00',  // Yellow for critical milestones
+        critBorderColor: '#000000',
+        todayLineColor: '#FFED00',
+      },
+      gantt: {
+        titleTopMargin: 25,
+        barHeight: 20,
+        barGap: 4,
+        topPadding: 60,
+        sidePadding: 20,
+        gridLineWidth: 1,
+        sectionFontSize: '14px',
+        numberSectionStyles: 3,
+        axisFormat: 'Week %W',
+        todayMarker: 'stroke:#FFED00, stroke-width: 2px, opacity: 0.5'
+      }
     });
   </script>
-  <!-- Tailwind CSS for styling (as used in the grade descriptors page) -->
+  <!-- Tailwind CSS for styling -->
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body {
-      font-family: Arial, Helvetica, sans-serif;
-      background-color: #f1f1f1;
+      font-family: 'Nunito', sans-serif;
+      background-color: #f8f9fa;
       padding: 0;
       margin: 0;
       color: #333;
@@ -37,7 +67,7 @@
     .header {
       text-align: center;
       margin-bottom: 30px;
-      border-bottom: 3px solid #aaaaaa;
+      border-bottom: 3px solid #FFED00;
       padding-bottom: 20px;
     }
     .footer {
@@ -46,7 +76,49 @@
       padding: 20px;
       color: #666;
       font-size: 0.9rem;
-      border-top: 1px solid #eee;
+      border-top: 1px solid #e9ecef;
+    }
+    .weight-box {
+      display: inline-block;
+      padding: 10px 15px;
+      margin: 5px;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+    .non-weighted {
+      background-color: #f8f9fa;
+      border: 2px solid #ced4da;
+    }
+    .weighted-20 {
+      background-color: #e9ecef;
+      border: 2px solid #adb5bd;
+    }
+    .weighted-80 {
+      background-color: #FFED00;
+      border: 2px solid #000000;
+    }
+    blockquote {
+      background-color: #f8f9fa;
+      border-left: 4px solid #FFED00;
+      padding: 15px;
+      margin: 20px 0;
+    }
+    .legend {
+      margin: 20px 0;
+      padding: 15px;
+      background-color: #f8f9fa;
+      border-radius: 4px;
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .legend-color {
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+      border-radius: 4px;
     }
   </style>
 </head>
@@ -56,81 +128,130 @@
       <div class="header">
         <img src="KSA_secondary_lock-up.png" alt="Kingston School of Art Logo" class="h-6 mb-4 mx-auto block">
         <h1 class="text-2xl font-bold mb-4">BA (Hons) Fashion Program Feedback and Assessment Timeline</h1>
-        <p>
-          This timeline visualizes your feedback and assessment journey over three years. Note that Year 1 is non-weighted, whereas, Year 2 contributes 20% and Year 3 contributes 80% towards your total assessment mark and final degree classification.
-          The timeline displays formative feedback opportunities and summative submission deadlines.<br>
-        </p>
+        <p>This timeline visualizes your feedback and assessment journey over the duration of the BA (Hons) Fashion Program.</p>
+        <p>It demonstrates how assessment weighting contributes to your final degree classification.</p>
+        
+        <div class="flex justify-center mt-4 mb-2">
+          <div class="weight-box non-weighted">Year 1: Non-weighted</div>
+          <div class="weight-box weighted-20">Year 2: 20% weighted</div>
+          <div class="weight-box weighted-80">Year 3: 80% weighted</div>
+        </div>
+        
+        <blockquote>
+          <em>"Commitment to practice is the key to progress, and through failure, we often uncover the most valuable lessons that teach us resilience, and gain insights that lead to deeper understanding, growth and mastery. Use this time well."</em>
+          <p>Staff member or Fashion Designer quote</p>
+        </blockquote>
+        
+        <div class="legend">
+          <h3 class="font-bold mb-2">Timeline Legend:</h3>
+          <div class="legend-item">
+            <div class="legend-color" style="background-color: #FFED00; border: 1px solid #000;"></div>
+            <span>Critical Milestone (Summative Assessment)</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-color" style="background-color: #f8f9fa; border: 1px solid #6c757d;"></div>
+            <span>Formative Feedback Session</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-color" style="background-color: #e9ecef; border: 1px solid #6c757d;"></div>
+            <span>Enrichment Week</span>
+          </div>
+        </div>
+        
+        <p>The timeline highlights both formative feedback sessions and summative submission deadlines. Each of these 'milestones' is interactive — clicking them provides additional details about the session, allowing you to learn more about its purpose and expectations.</p>
       </div>
 
       <!-- Mermaid Diagram Container -->
       <div class="mermaid">
-        gantt
-            dateFormat  YYYY-MM-DD
-           
-
-            %% Level 4 - (Non-weighted)
-            section Level 4 - (Non-weighted)
-            Induction: 2024-09-09, 2024-09-20
-            Project 1 (FN4004 - Design Process 1) : 2024-09-23, 2024-10-21
-            Formative Feedback (FN4004 - Design Process 1) :milestone, 2024-10-14, 1d
-            Summative Assessment Submission (FN4004 - Design Process 1) :milestone, 2024-10-21, 1d
-            Project 2 (FN4004 - Design Process 1) : 2024-10-24, 2024-12-13
-            TB1 Enrichment Week (FN4004 - Design Process 1) : 2024-10-28, 2024-11-01
-            Formative Feedback (FN4004 - Design Process 1) :milestone, 2024-12-02, 1d
-            Toile Development (FN4005 - Design Product 1) : 2025-01-06, 2025-02-14
-            Project 3 (FN4004 - Design Process 1) : 2025-01-13, 2025-03-17
-            Formative Feedback (FN4005 - Design Product 1) :milestone, 2025-02-10, 1d
-            TB2 Enrichment Week (FN4005 - Design Product 1) : 2025-02-17, 2025-02-21
-            Portfolio Development (FN4005 - Design Product 1) : 2025-02-24, 2025-03-17
-            Summative Submission (FN4005 - Design Product 1) :milestone, 2025-03-17, 1d
-            Historical Themes Research (HA4104 - Design, Style & Image) : 2024-09-23, 2024-11-22
-            Essay Planning (HA4104 - Design, Style & Image) : 2024-11-25, 2024-12-06
-            Essay Writing Period (HA4104 - Design, Style & Image) : 2025-01-06, 2025-02-28
-            CHS Submission (HA4104 - Design, Style & Image) :milestone, 2025-03-03, 1d
-            Continuous Assessment (FN4002 - Professional Practice 1) : 2024-09-01, 2025-06-30
-
-            %% Level 5 - (Weighted 20%, TB2)
-            section Level 5 - (Weighted 20%, TB2)
-            Induction: 2025-09-09, 2025-09-20
-            Project Kick-Off (FN5001 - Design Process 2) : 2025-09-23, 2025-10-21
-            Formative Feedback (FN5001 - Design Process 2) :milestone, 2025-10-14, 1d
-            Project Submission (FN5001 - Design Process 2) :milestone, 2025-10-21, 1d
-            Design Process Tutorials (FN5001 - Design Process 2) : 2025-10-22, 2025-12-13
-            Major Project Phase 1 (FN5001 - Design Process 2) : 2025-10-24, 2025-12-13
-            Enrichment Week (FN5001 - Design Process 2) : 2025-10-28, 2025-11-01
-            Formative Review (FN5001 - Design Process 2) :milestone, 2025-12-02, 1d
-            Product Development (FN5003 - Design Product 2) : 2026-01-06, 2026-02-14
-            Icons & Muses (FN5001 - Design Process 2) : 2026-01-13, 2026-03-17
-            Mid-Point Formative (FN5003 - Design Product 2) :milestone, 2026-02-10, 1d
-            Enrichment Week (FN5003 - Design Product 2) : 2026-02-17, 2026-02-21
-            Portfolio Development (FN5003 - Design Product 2) : 2026-02-24, 2026-03-17
-            Final Project Submission (FN5003 - Design Product 2) :milestone, 2026-03-17, 1d
-            Historical Themes Research (HA5107 - Critical Issues in Fashion) : 2025-09-23, 2025-11-22
-            Essay Planning (HA5107 - Critical Issues in Fashion) : 2025-11-25, 2025-12-06
-            Essay Writing Period (HA5107 - Critical Issues in Fashion) : 2026-01-06, 2026-02-28
-            CHS Submission (HA5107 - Critical Issues in Fashion) :milestone, 2026-03-03, 1d
-            Continuous Assessment (FN5002 - Professional Practice 2) : 2025-09-01, 2026-06-30
-
-            %% Level 6 - Year 3 (Weighted 80%, TB3)
-            section Level 6 - Year 3 (Weighted 80%, TB3)
-            Induction (General Induction) : 2026-09-09, 2026-09-20
-            Project Kick-Off (FN6001 - Design Process 3) : 2026-09-23, 2026-10-21
-            Formative Feedback (FN6001 - Design Process 3) :milestone, 2026-10-14, 1d
-            Project Submission (FN6001 - Design Process 3) :milestone, 2026-10-21, 1d
-            Design Process Tutorials (FN6001 - Design Process 3) : 2026-10-22, 2026-12-13
-            Major Project Phase 1 (FN6001 - Design Process 3) : 2026-10-24, 2026-12-13
-            Enrichment Week (FN6001 - Design Process 3) : 2026-10-28, 2026-11-01
-            Formative Review (FN6001 - Design Process 3) :milestone, 2026-12-02, 1d
-            Product Development (FN6004 - Final Major Project) : 2027-01-06, 2027-02-14
-            Icons & Muses (FN6004 - Final Major Project) : 2027-01-13, 2027-03-17
-            Mid-Point Formative (FN6004 - Final Major Project) :milestone, 2027-02-10, 1d
-            Enrichment Week (FN6004 - Final Major Project) : 2027-02-17, 2027-02-21
-            Portfolio Development (FN6004 - Final Major Project) : 2027-02-24, 2027-03-17
-            Final Project Submission (FN6004 - Final Major Project) :milestone, 2027-03-17, 1d
-            Historical Themes Research (HA6101 - Dissertation) : 2026-09-23, 2026-11-22
-            Essay Planning (HA6101 - Dissertation) : 2026-11-25, 2026-12-06
-            Essay Writing Period (HA6101 - Dissertation) : 2027-01-06, 2027-02-28
-            CHS Submission (HA6101 - Dissertation) :milestone, 2027-03-03, 1d
+gantt
+    dateFormat  X
+    axisFormat Week %W
+    title BA (Hons) Fashion Program Timeline
+    
+    section Level 4 - Non-weighted
+    Induction : 0, 2w
+    TB1                  : 2w, 12w
+    Project 1 (FN4004 - Design Process 1) : 2w, 10w
+    Formative Feedback (FN4004) : milestone, click taskA "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder" "View session details", 9w, 0d
+    Summative Assessment Submission (FN4004) : milestone, crit, click taskB "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder" "View assessment details", 12w, 0d
+    TB1 Enrichment Week : done, 8w, 1w
+    
+    Project 2 (FN4004) : 12w, 22w
+    Formative Feedback (FN4004) : milestone, click taskC "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder" "View session details", 20w, 0d
+    
+    Winter Break : done, 22w, 4w
+    
+    TB2                  : 26w, 12w
+    Toile Development (FN4005) : 26w, 8w
+    Formative Feedback (FN4005) : milestone, click taskD "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder" "View session details", 32w, 0d
+    TB2 Enrichment Week : done, 33w, 1w
+    Project 3 (FN4004) : 26w, 38w
+    Portfolio Development (FN4005) : 34w, 38w
+    Summative Submission (FN4005) : milestone, crit, click taskE "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder" "View assessment details", 38w, 0d
+    
+    Historical Themes Research (HA4104) : 2w, 16w
+    Essay Planning (HA4104) : 16w, 22w
+    
+    Essay Writing Period (HA4104) : 26w, 36w
+    CHS Submission (HA4104) : milestone, crit, click taskF "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder" "View assessment details", 36w, 0d
+    
+    Summer Term           : 38w, 12w
+    
+    section Level 5 - Weighted 20%
+    Induction : 52w, 2w
+    TB1                  : 54w, 12w
+    Project Kick-Off (FN5001 - Design Process 2) : 54w, 62w
+    Formative Feedback (FN5001) : milestone, click taskG "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder" "View session details", 61w, 0d
+    Project Submission (FN5001) : milestone, crit, click taskH "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder" "View assessment details", 64w, 0d
+    TB1 Enrichment Week : done, 60w, 1w
+    Design Process Tutorials (FN5001) : 62w, 74w
+    Major Project Phase 1 (FN5001) : 62w, 74w
+    Formative Review (FN5001) : milestone, click taskI "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder" "View session details", 72w, 0d
+    
+    Winter Break : done, 74w, 4w
+    
+    TB2                  : 78w, 12w
+    Product Development (FN5003) : 78w, 86w
+    Icons & Muses (FN5001) : 78w, 90w
+    Mid-Point Formative (FN5003) : milestone, click taskJ "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder" "View session details", 84w, 0d
+    TB2 Enrichment Week : done, 85w, 1w
+    Portfolio Development (FN5003) : 86w, 90w
+    Final Project Submission (FN5003) : milestone, crit, click taskK "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder" "View assessment details", 90w, 0d
+    
+    Historical Themes Research (HA5107) : 54w, 68w
+    Essay Planning (HA5107) : 68w, 74w
+    
+    Essay Writing Period (HA5107) : 78w, 88w
+    CHS Submission (HA5107) : milestone, crit, click taskL "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder" "View assessment details", 88w, 0d
+    
+    Summer Term           : 90w, 12w
+    
+    section Level 6 - Weighted 80%
+    Induction : 104w, 2w
+    TB1                  : 106w, 12w
+    Project Kick-Off (FN6001 - Design Process 3) : 106w, 114w
+    Formative Feedback (FN6001) : milestone, click taskM "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder" "View session details", 113w, 0d
+    Project Submission (FN6001) : milestone, crit, click taskN "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder" "View assessment details", 116w, 0d
+    TB1 Enrichment Week : done, 112w, 1w
+    Design Process Tutorials (FN6001) : 114w, 126w
+    Major Project Phase 1 (FN6001) : 114w, 126w
+    Formative Review (FN6001) : milestone, click taskO "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder" "View session details", 124w, 0d
+    
+    Winter Break : done, 126w, 4w
+    
+    TB2                  : 130w, 12w
+    Product Development (FN6004) : 130w, 138w
+    Icons & Muses (FN6004) : 130w, 142w
+    Mid-Point Formative (FN6004) : milestone, click taskP "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder" "View session details", 136w, 0d
+    TB2 Enrichment Week : done, 137w, 1w
+    Portfolio Development (FN6004) : 138w, 142w
+    Final Project Submission (FN6004) : milestone, crit, click taskQ "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder" "View assessment details", 142w, 0d
+    
+    Historical Themes Research (HA6101) : 106w, 120w
+    Essay Planning (HA6101) : 120w, 126w
+    
+    Essay Writing Period (HA6101) : 130w, 140w
+    CHS Submission (HA6101) : milestone, crit, click taskR "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder" "View assessment details", 140w, 0d
       </div>
     </div>
 
