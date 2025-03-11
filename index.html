@@ -309,6 +309,21 @@
     .timeline-item.project {
       background-color: #e9ecef;
       border-color: #adb5bd;
+      height: 1rem; /* Reduced height for narrower bars */
+      border-radius: 0.125rem;
+    }
+    
+    /* Add dots at the beginning of project bars */
+    .timeline-item.project::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 0.5rem;
+      height: 0.5rem;
+      background-color: #adb5bd;
+      border-radius: 50%;
     }
     
     .timeline-item.formative {
@@ -353,24 +368,25 @@
       position: absolute;
       width: auto;
       min-width: 150px;
-      bottom: -2rem; /* Increased distance from the bottom */
-      left: 0.75rem !important; /* Position from the left of the milestone */
-      font-size: 0.65rem;
+      bottom: -1.2rem; /* Closer to the icon */
+      font-size: 0.75rem; /* Slightly larger */
       white-space: nowrap;
-      text-align: left; /* Align text to left */
-      color: #555; /* Slightly darker gray for better readability */
+      text-align: center;
+      color: #333; /* Darker for better readability */
+      transform: translateX(-50%); /* Center the label horizontally */
+      left: 50%; /* Center point */
     }
     
-    /* Label for project items as well */
+    /* Project label - appears below project bars */
     .project-label {
       position: absolute;
-      bottom: -1.5rem;
+      bottom: -1.2rem;
       left: 0;
-      font-size: 0.65rem;
+      font-size: 0.75rem; /* Slightly larger */
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      color: #555;
+      color: #333; /* Darker for better readability */
       max-width: 100%;
     }
     
@@ -458,16 +474,18 @@
       }
       
       .milestone-label {
-        bottom: -2.5rem;
-        left: 0 !important;
+        bottom: -1.5rem;
+        font-size: 0.7rem;
         min-width: 120px;
         max-width: 100%;
+        white-space: normal; /* Allow wrapping on mobile */
       }
       
       .project-label {
-        bottom: -2.5rem;
-        left: 0 !important;
+        bottom: -1.5rem;
+        font-size: 0.7rem;
         max-width: 100%;
+        white-space: normal; /* Allow wrapping on mobile */
       }
     }
   </style>
@@ -849,18 +867,22 @@
                 showModal(item);
               });
               
+              // Create a container div for milestone and its label
+              const milestoneContainer = document.createElement('div');
+              milestoneContainer.style.position = 'relative';
+              milestoneContainer.style.width = '1.5rem';
+              
               // Add label below the milestone
               const label = document.createElement('div');
               label.className = 'milestone-label';
               label.textContent = item.name;
-              row.appendChild(label); // Add to row, not the item element
+              label.style.left = position.left;
+              
+              row.appendChild(itemElement);
+              row.appendChild(label);
             }
           } else {
-            // Add label inside for regular items
-            const innerLabel = document.createElement('div');
-            innerLabel.className = 'item-label';
-            innerLabel.textContent = item.name;
-            itemElement.appendChild(innerLabel);
+            // Remove inner text from project bars
             
             // Add smaller label beneath the project bar
             const outerLabel = document.createElement('div');
@@ -868,10 +890,11 @@
             outerLabel.textContent = item.name;
             outerLabel.style.left = position.left;
             outerLabel.style.width = position.width;
+            
+            row.appendChild(itemElement);
             row.appendChild(outerLabel);
           }
           
-          row.appendChild(itemElement);
           timelineItems.appendChild(row);
         }
       }
