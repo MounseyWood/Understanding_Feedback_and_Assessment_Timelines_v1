@@ -308,32 +308,13 @@
     
     .timeline-item.project {
       background-color: transparent; /* Remove background */
-      border-top: 2px solid #adb5bd; /* Use a horizontal line instead of a box */
-      height: 6px; /* Increased to 6px as requested */
+      border-top: 6px solid #adb5bd; /* Horizontal line of 6pt thickness */
+      height: 6px;
       border-left: none;
       border-right: none;
       border-bottom: none;
       border-radius: 0;
-    }
-    
-    /* Add dots at the beginning and end of project lines */
-    .timeline-item.project::before,
-    .timeline-item.project::after {
-      content: "";
-      position: absolute;
-      width: 8px;
-      height: 8px;
-      background-color: #333;
-      border-radius: 50%;
-      top: -1px; /* Adjust for the new height */
-    }
-    
-    .timeline-item.project::before {
-      left: 0;
-    }
-    
-    .timeline-item.project::after {
-      right: 0;
+      /* No pseudo-elements for dots */
     }
     
     .timeline-item.formative {
@@ -873,11 +854,14 @@
                 showModal(item);
               });
               
+              // Calculate the exact position for label to be directly beneath the icon
+              const leftPos = position.leftNumeric;
+              
               // Add label precisely aligned with the milestone
               const label = document.createElement('div');
               label.className = 'milestone-label';
               label.textContent = item.name;
-              label.style.left = position.left; // Align with the milestone
+              label.style.left = `${leftPos - 0.5}%`; // Align to be directly beneath the icon
               
               row.appendChild(itemElement);
               row.appendChild(label);
