@@ -4,59 +4,25 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>BA (Hons) Fashion Program Timeline</title>
+  
   <!-- Load Mermaid -->
-  <script src="https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.min.js"></script>
-  <script>
-    mermaid.initialize({
-      startOnLoad: true,
-      securityLevel: 'loose', // Allows interaction
-      themeVariables: {
-        primaryColor: '#FFED00',
-        primaryTextColor: '#000000',
-        primaryBorderColor: '#000000',
-        edgeLabelBackground: '#ffffff',
-        tertiaryColor: '#f8f9fa',
-        secondaryColor: '#333333',
-        noteBkgColor: '#e2e3e5',
-        noteTextColor: '#333333',
-        noteBorderColor: '#ced4da',
-        lineColor: '#6c757d',
-        textColor: '#000000',
-        mainBkg: '#ffffff',
-        altBkg: '#f5f5f5',
-        critBkg: '#FFED00',  // Yellow for critical milestones
-        critBorderColor: '#000000',
-        todayLineColor: '#FFED00',
-      },
-      gantt: {
-        titleTopMargin: 25,
-        barHeight: 20,
-        barGap: 4,
-        topPadding: 60,
-        sidePadding: 20,
-        gridLineWidth: 1,
-        sectionFontSize: '14px',
-        numberSectionStyles: 3,
-        axisFormat: 'Week %W',
-        todayMarker: 'stroke:#FFED00, stroke-width: 2px, opacity: 0.5'
-      }
-    });
-  </script>
-  <!-- Tailwind CSS for styling -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+  
   <style>
     body {
-      font-family: 'Nunito', sans-serif;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       background-color: #f8f9fa;
       padding: 0;
       margin: 0;
       color: #333;
     }
+    
     .ku-content-wrapper {
       max-width: 1200px;
       margin: 0 auto;
       padding: 20px;
     }
+    
     .ku-content {
       background-color: white;
       border-radius: 8px;
@@ -64,12 +30,14 @@
       padding: 30px;
       margin-bottom: 30px;
     }
+    
     .header {
       text-align: center;
       margin-bottom: 30px;
       border-bottom: 3px solid #FFED00;
       padding-bottom: 20px;
     }
+    
     .footer {
       text-align: center;
       margin-top: 30px;
@@ -78,6 +46,7 @@
       font-size: 0.9rem;
       border-top: 1px solid #e9ecef;
     }
+    
     .weight-box {
       display: inline-block;
       padding: 10px 15px;
@@ -85,35 +54,42 @@
       border-radius: 4px;
       font-weight: bold;
     }
+    
     .non-weighted {
       background-color: #f8f9fa;
       border: 2px solid #ced4da;
     }
+    
     .weighted-20 {
       background-color: #e9ecef;
       border: 2px solid #adb5bd;
     }
+    
     .weighted-80 {
       background-color: #FFED00;
       border: 2px solid #000000;
     }
+    
     blockquote {
       background-color: #f8f9fa;
       border-left: 4px solid #FFED00;
       padding: 15px;
       margin: 20px 0;
     }
+    
     .legend {
       margin: 20px 0;
       padding: 15px;
       background-color: #f8f9fa;
       border-radius: 4px;
     }
+    
     .legend-item {
       display: flex;
       align-items: center;
       margin-bottom: 8px;
     }
+    
     .legend-color {
       width: 20px;
       height: 20px;
@@ -126,12 +102,11 @@
   <div class="ku-content-wrapper">
     <div class="ku-content">
       <div class="header">
-        <img src="KSA_secondary_lock-up.png" alt="Kingston School of Art Logo" class="h-6 mb-4 mx-auto block">
-        <h1 class="text-2xl font-bold mb-4">BA (Hons) Fashion Program Feedback and Assessment Timeline</h1>
+        <h1 style="font-size: 1.5rem; font-weight: bold; margin-bottom: 1rem;">BA (Hons) Fashion Program Feedback and Assessment Timeline</h1>
         <p>This timeline visualizes your feedback and assessment journey over the duration of the BA (Hons) Fashion Program.</p>
         <p>It demonstrates how assessment weighting contributes to your final degree classification.</p>
         
-        <div class="flex justify-center mt-4 mb-2">
+        <div style="display: flex; justify-content: center; margin-top: 1rem; margin-bottom: 0.5rem;">
           <div class="weight-box non-weighted">Year 1: Non-weighted</div>
           <div class="weight-box weighted-20">Year 2: 20% weighted</div>
           <div class="weight-box weighted-80">Year 3: 80% weighted</div>
@@ -143,7 +118,7 @@
         </blockquote>
         
         <div class="legend">
-          <h3 class="font-bold mb-2">Timeline Legend:</h3>
+          <h3 style="font-weight: bold; margin-bottom: 0.5rem;">Timeline Legend:</h3>
           <div class="legend-item">
             <div class="legend-color" style="background-color: #FFED00; border: 1px solid #000;"></div>
             <span>Critical Milestone (Summative Assessment)</span>
@@ -163,95 +138,114 @@
 
       <!-- Mermaid Diagram Container -->
       <div class="mermaid">
+%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#FFED00',
+      'primaryTextColor': '#000000',
+      'primaryBorderColor': '#000000',
+      'lineColor': '#6c757d',
+      'secondaryColor': '#333333',
+      'tertiaryColor': '#f8f9fa'
+    },
+    'gantt': {
+      'barHeight': 20,
+      'barGap': 4,
+      'topPadding': 50,
+      'sidePadding': 50,
+      'gridLineWidth': 1,
+      'sectionFontSize': '14px'
+    }
+  }
+}%%
+
 gantt
-    dateFormat  X
-    axisFormat Week %W
     title BA (Hons) Fashion Program Timeline
+    dateFormat X
+    axisFormat Week %W
     
     section Level 4 - Non-weighted
     Induction : 0, 2w
     TB1                  : 2w, 12w
-    Project 1 (FN4004 - Design Process 1) : 2w, 10w
-    Formative Feedback (FN4004) : milestone, click taskA "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder" "View session details", 9w, 0d
-    Summative Assessment Submission (FN4004) : milestone, crit, click taskB "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder" "View assessment details", 12w, 0d
+    Project 1 (FN4004) : 2w, 10w
+    Formative Feedback (FN4004) : milestone, 9w, 0d
+    Summative Assessment (FN4004) : milestone, crit, 12w, 0d
     TB1 Enrichment Week : done, 8w, 1w
     
     Project 2 (FN4004) : 12w, 22w
-    Formative Feedback (FN4004) : milestone, click taskC "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder" "View session details", 20w, 0d
+    Formative Feedback (FN4004) : milestone, 20w, 0d
     
     Winter Break : done, 22w, 4w
     
     TB2                  : 26w, 12w
     Toile Development (FN4005) : 26w, 8w
-    Formative Feedback (FN4005) : milestone, click taskD "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder" "View session details", 32w, 0d
+    Formative Feedback (FN4005) : milestone, 32w, 0d
     TB2 Enrichment Week : done, 33w, 1w
     Project 3 (FN4004) : 26w, 38w
     Portfolio Development (FN4005) : 34w, 38w
-    Summative Submission (FN4005) : milestone, crit, click taskE "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder" "View assessment details", 38w, 0d
+    Summative Submission (FN4005) : milestone, crit, 38w, 0d
     
     Historical Themes Research (HA4104) : 2w, 16w
     Essay Planning (HA4104) : 16w, 22w
-    
     Essay Writing Period (HA4104) : 26w, 36w
-    CHS Submission (HA4104) : milestone, crit, click taskF "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder" "View assessment details", 36w, 0d
+    CHS Submission (HA4104) : milestone, crit, 36w, 0d
     
     Summer Term           : 38w, 12w
     
     section Level 5 - Weighted 20%
     Induction : 52w, 2w
     TB1                  : 54w, 12w
-    Project Kick-Off (FN5001 - Design Process 2) : 54w, 62w
-    Formative Feedback (FN5001) : milestone, click taskG "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder" "View session details", 61w, 0d
-    Project Submission (FN5001) : milestone, crit, click taskH "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder" "View assessment details", 64w, 0d
+    Project Kick-Off (FN5001) : 54w, 62w
+    Formative Feedback (FN5001) : milestone, 61w, 0d
+    Project Submission (FN5001) : milestone, crit, 64w, 0d
     TB1 Enrichment Week : done, 60w, 1w
     Design Process Tutorials (FN5001) : 62w, 74w
     Major Project Phase 1 (FN5001) : 62w, 74w
-    Formative Review (FN5001) : milestone, click taskI "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder" "View session details", 72w, 0d
+    Formative Review (FN5001) : milestone, 72w, 0d
     
     Winter Break : done, 74w, 4w
     
     TB2                  : 78w, 12w
     Product Development (FN5003) : 78w, 86w
     Icons & Muses (FN5001) : 78w, 90w
-    Mid-Point Formative (FN5003) : milestone, click taskJ "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder" "View session details", 84w, 0d
+    Mid-Point Formative (FN5003) : milestone, 84w, 0d
     TB2 Enrichment Week : done, 85w, 1w
     Portfolio Development (FN5003) : 86w, 90w
-    Final Project Submission (FN5003) : milestone, crit, click taskK "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder" "View assessment details", 90w, 0d
+    Final Project Submission (FN5003) : milestone, crit, 90w, 0d
     
     Historical Themes Research (HA5107) : 54w, 68w
     Essay Planning (HA5107) : 68w, 74w
-    
     Essay Writing Period (HA5107) : 78w, 88w
-    CHS Submission (HA5107) : milestone, crit, click taskL "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder" "View assessment details", 88w, 0d
+    CHS Submission (HA5107) : milestone, crit, 88w, 0d
     
     Summer Term           : 90w, 12w
     
     section Level 6 - Weighted 80%
     Induction : 104w, 2w
     TB1                  : 106w, 12w
-    Project Kick-Off (FN6001 - Design Process 3) : 106w, 114w
-    Formative Feedback (FN6001) : milestone, click taskM "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder" "View session details", 113w, 0d
-    Project Submission (FN6001) : milestone, crit, click taskN "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder" "View assessment details", 116w, 0d
+    Project Kick-Off (FN6001) : 106w, 114w
+    Formative Feedback (FN6001) : milestone, 113w, 0d
+    Project Submission (FN6001) : milestone, crit, 116w, 0d
     TB1 Enrichment Week : done, 112w, 1w
     Design Process Tutorials (FN6001) : 114w, 126w
     Major Project Phase 1 (FN6001) : 114w, 126w
-    Formative Review (FN6001) : milestone, click taskO "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder" "View session details", 124w, 0d
+    Formative Review (FN6001) : milestone, 124w, 0d
     
     Winter Break : done, 126w, 4w
     
     TB2                  : 130w, 12w
     Product Development (FN6004) : 130w, 138w
     Icons & Muses (FN6004) : 130w, 142w
-    Mid-Point Formative (FN6004) : milestone, click taskP "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder" "View session details", 136w, 0d
+    Mid-Point Formative (FN6004) : milestone, 136w, 0d
     TB2 Enrichment Week : done, 137w, 1w
     Portfolio Development (FN6004) : 138w, 142w
-    Final Project Submission (FN6004) : milestone, crit, click taskQ "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder" "View assessment details", 142w, 0d
+    Final Project Submission (FN6004) : milestone, crit, 142w, 0d
     
     Historical Themes Research (HA6101) : 106w, 120w
     Essay Planning (HA6101) : 120w, 126w
-    
     Essay Writing Period (HA6101) : 130w, 140w
-    CHS Submission (HA6101) : milestone, crit, click taskR "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder" "View assessment details", 140w, 0d
+    CHS Submission (HA6101) : milestone, crit, 140w, 0d
       </div>
     </div>
 
@@ -260,5 +254,25 @@ gantt
       <p>© 2025 Kingston University</p>
     </div>
   </div>
+  
+  <script>
+    // Initialize Mermaid after the DOM is fully loaded
+    document.addEventListener('DOMContentLoaded', function() {
+      mermaid.initialize({
+        startOnLoad: true,
+        securityLevel: 'loose',
+        gantt: {
+          titleTopMargin: 25,
+          barHeight: 20,
+          barGap: 4,
+          topPadding: 60,
+          sidePadding: 20,
+          numberSectionStyles: 3,
+          axisFormat: 'Week %W',
+          todayMarker: 'stroke:#FFED00, stroke-width: 2px, opacity: 0.5'
+        }
+      });
+    });
+  </script>
 </body>
 </html>
