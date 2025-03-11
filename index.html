@@ -1,278 +1,291 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BA (Hons) Fashion Program Timeline</title>
-  
-  <!-- Load Mermaid -->
-  <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
-  
-  <style>
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background-color: #f8f9fa;
-      padding: 0;
-      margin: 0;
-      color: #333;
-    }
-    
-    .ku-content-wrapper {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-    
-    .ku-content {
-      background-color: white;
-      border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-      padding: 30px;
-      margin-bottom: 30px;
-    }
-    
-    .header {
-      text-align: center;
-      margin-bottom: 30px;
-      border-bottom: 3px solid #FFED00;
-      padding-bottom: 20px;
-    }
-    
-    .footer {
-      text-align: center;
-      margin-top: 30px;
-      padding: 20px;
-      color: #666;
-      font-size: 0.9rem;
-      border-top: 1px solid #e9ecef;
-    }
-    
-    .weight-box {
-      display: inline-block;
-      padding: 10px 15px;
-      margin: 5px;
-      border-radius: 4px;
-      font-weight: bold;
-    }
-    
-    .non-weighted {
-      background-color: #f8f9fa;
-      border: 2px solid #ced4da;
-    }
-    
-    .weighted-20 {
-      background-color: #e9ecef;
-      border: 2px solid #adb5bd;
-    }
-    
-    .weighted-80 {
-      background-color: #FFED00;
-      border: 2px solid #000000;
-    }
-    
-    blockquote {
-      background-color: #f8f9fa;
-      border-left: 4px solid #FFED00;
-      padding: 15px;
-      margin: 20px 0;
-    }
-    
-    .legend {
-      margin: 20px 0;
-      padding: 15px;
-      background-color: #f8f9fa;
-      border-radius: 4px;
-    }
-    
-    .legend-item {
-      display: flex;
-      align-items: center;
-      margin-bottom: 8px;
-    }
-    
-    .legend-color {
-      width: 20px;
-      height: 20px;
-      margin-right: 10px;
-      border-radius: 4px;
-    }
-  </style>
-</head>
-<body>
-  <div class="ku-content-wrapper">
-    <div class="ku-content">
-      <div class="header">
-        <h1 style="font-size: 1.5rem; font-weight: bold; margin-bottom: 1rem;">BA (Hons) Fashion Program Feedback and Assessment Timeline</h1>
-        <p>This timeline visualizes your feedback and assessment journey over the duration of the BA (Hons) Fashion Program.</p>
-        <p>It demonstrates how assessment weighting contributes to your final degree classification.</p>
-        
-        <div style="display: flex; justify-content: center; margin-top: 1rem; margin-bottom: 0.5rem;">
-          <div class="weight-box non-weighted">Year 1: Non-weighted</div>
-          <div class="weight-box weighted-20">Year 2: 20% weighted</div>
-          <div class="weight-box weighted-80">Year 3: 80% weighted</div>
-        </div>
-        
-        <blockquote>
-          <em>"Commitment to practice is the key to progress, and through failure, we often uncover the most valuable lessons that teach us resilience, and gain insights that lead to deeper understanding, growth and mastery. Use this time well."</em>
-          <p>Staff member or Fashion Designer quote</p>
-        </blockquote>
-        
-        <div class="legend">
-          <h3 style="font-weight: bold; margin-bottom: 0.5rem;">Timeline Legend:</h3>
-          <div class="legend-item">
-            <div class="legend-color" style="background-color: #FFED00; border: 1px solid #000;"></div>
-            <span>Critical Milestone (Summative Assessment)</span>
-          </div>
-          <div class="legend-item">
-            <div class="legend-color" style="background-color: #f8f9fa; border: 1px solid #6c757d;"></div>
-            <span>Formative Feedback Session</span>
-          </div>
-          <div class="legend-item">
-            <div class="legend-color" style="background-color: #e9ecef; border: 1px solid #6c757d;"></div>
-            <span>Enrichment Week</span>
-          </div>
-        </div>
-        
-        <p>The timeline highlights both formative feedback sessions and summative submission deadlines. Each of these 'milestones' is interactive — clicking them provides additional details about the session, allowing you to learn more about its purpose and expectations.</p>
-      </div>
+import React, { useState } from 'react';
 
-      <!-- Mermaid Diagram Container -->
-      <div class="mermaid">
-%%{
-  init: {
-    'theme': 'base',
-    'themeVariables': {
-      'primaryColor': '#FFED00',
-      'primaryTextColor': '#000000',
-      'primaryBorderColor': '#000000',
-      'lineColor': '#6c757d',
-      'secondaryColor': '#333333',
-      'tertiaryColor': '#f8f9fa'
+const FashionProgramTimeline = () => {
+  const [activeDetails, setActiveDetails] = useState(null);
+
+  // Module/assessment details that will be displayed when clicking on milestones
+  const details = {
+    formative1: {
+      title: "Formative Feedback (FN4004)",
+      description: "Mid-project feedback to guide your development process. This is an opportunity to receive constructive critique on your work in progress.",
+      expectations: "Bring your sketchbook, initial designs, and research materials. Be prepared to discuss your concept development and receive peer feedback.",
+      link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder"
     },
-    'gantt': {
-      'barHeight': 20,
-      'barGap': 4,
-      'topPadding': 50,
-      'sidePadding': 50,
-      'gridLineWidth': 1,
-      'sectionFontSize': '14px'
+    summative1: {
+      title: "Summative Assessment (FN4004)",
+      description: "Final assessment of your Design Process 1 project. This assessment evaluates your ability to research, develop and communicate design ideas.",
+      expectations: "Submit your completed project work including research, development, final designs and supporting documentation.",
+      link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder"
+    },
+    formative2: {
+      title: "Formative Feedback (FN4005)",
+      description: "Development feedback for your toile work. This session helps you refine your technical execution before final submission.",
+      expectations: "Present your toile development, pattern work, and technical drawings for feedback.",
+      link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder"
+    },
+    summative2: {
+      title: "Summative Submission (FN4005)",
+      description: "Final assessment of your technical development and portfolio work.",
+      expectations: "Submit your completed portfolio, technical files, and finished garment/toile construction.",
+      link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder"
+    },
+    // Year 2 details
+    formative5: {
+      title: "Formative Feedback (FN5001)",
+      description: "Mid-project feedback to guide your Design Process 2 development.",
+      expectations: "Present your concept development, research direction, and initial design ideas.",
+      link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder"
+    },
+    summative5: {
+      title: "Project Submission (FN5001)",
+      description: "Final assessment of your Design Process 2 project. This contributes to your 20% Year 2 weighting.",
+      expectations: "Submit your completed project including research, development, and final design presentation.",
+      link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder"
+    },
+    // Year 3 details
+    formative9: {
+      title: "Formative Feedback (FN6001)",
+      description: "Critical development feedback for your final year Design Process 3 work.",
+      expectations: "Present your advanced concept development, research, and design direction for review.",
+      link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder"
+    },
+    summative9: {
+      title: "Final Project Submission (FN6004)",
+      description: "Culmination of your Fashion program work. This assessment forms a major part of your 80% Year 3 weighting.",
+      expectations: "Submit your comprehensive final collection, supporting research, development work, and professional portfolio.",
+      link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder"
     }
-  }
-}%%
+  };
 
-gantt
-    title BA (Hons) Fashion Program Timeline
-    dateFormat X
-    axisFormat Week %W
-    
-    section Level 4 - Non-weighted
-    Induction : 0, 2w
-    TB1                  : 2w, 12w
-    Project 1 (FN4004) : 2w, 10w
-    Formative Feedback (FN4004) : milestone, 9w, 0d
-    Summative Assessment (FN4004) : milestone, crit, 12w, 0d
-    TB1 Enrichment Week : done, 8w, 1w
-    
-    Project 2 (FN4004) : 12w, 22w
-    Formative Feedback (FN4004) : milestone, 20w, 0d
-    
-    Winter Break : done, 22w, 4w
-    
-    TB2                  : 26w, 12w
-    Toile Development (FN4005) : 26w, 8w
-    Formative Feedback (FN4005) : milestone, 32w, 0d
-    TB2 Enrichment Week : done, 33w, 1w
-    Project 3 (FN4004) : 26w, 38w
-    Portfolio Development (FN4005) : 34w, 38w
-    Summative Submission (FN4005) : milestone, crit, 38w, 0d
-    
-    Historical Themes Research (HA4104) : 2w, 16w
-    Essay Planning (HA4104) : 16w, 22w
-    Essay Writing Period (HA4104) : 26w, 36w
-    CHS Submission (HA4104) : milestone, crit, 36w, 0d
-    
-    Summer Term           : 38w, 12w
-    
-    section Level 5 - Weighted 20%
-    Induction : 52w, 2w
-    TB1                  : 54w, 12w
-    Project Kick-Off (FN5001) : 54w, 62w
-    Formative Feedback (FN5001) : milestone, 61w, 0d
-    Project Submission (FN5001) : milestone, crit, 64w, 0d
-    TB1 Enrichment Week : done, 60w, 1w
-    Design Process Tutorials (FN5001) : 62w, 74w
-    Major Project Phase 1 (FN5001) : 62w, 74w
-    Formative Review (FN5001) : milestone, 72w, 0d
-    
-    Winter Break : done, 74w, 4w
-    
-    TB2                  : 78w, 12w
-    Product Development (FN5003) : 78w, 86w
-    Icons & Muses (FN5001) : 78w, 90w
-    Mid-Point Formative (FN5003) : milestone, 84w, 0d
-    TB2 Enrichment Week : done, 85w, 1w
-    Portfolio Development (FN5003) : 86w, 90w
-    Final Project Submission (FN5003) : milestone, crit, 90w, 0d
-    
-    Historical Themes Research (HA5107) : 54w, 68w
-    Essay Planning (HA5107) : 68w, 74w
-    Essay Writing Period (HA5107) : 78w, 88w
-    CHS Submission (HA5107) : milestone, crit, 88w, 0d
-    
-    Summer Term           : 90w, 12w
-    
-    section Level 6 - Weighted 80%
-    Induction : 104w, 2w
-    TB1                  : 106w, 12w
-    Project Kick-Off (FN6001) : 106w, 114w
-    Formative Feedback (FN6001) : milestone, 113w, 0d
-    Project Submission (FN6001) : milestone, crit, 116w, 0d
-    TB1 Enrichment Week : done, 112w, 1w
-    Design Process Tutorials (FN6001) : 114w, 126w
-    Major Project Phase 1 (FN6001) : 114w, 126w
-    Formative Review (FN6001) : milestone, 124w, 0d
-    
-    Winter Break : done, 126w, 4w
-    
-    TB2                  : 130w, 12w
-    Product Development (FN6004) : 130w, 138w
-    Icons & Muses (FN6004) : 130w, 142w
-    Mid-Point Formative (FN6004) : milestone, 136w, 0d
-    TB2 Enrichment Week : done, 137w, 1w
-    Portfolio Development (FN6004) : 138w, 142w
-    Final Project Submission (FN6004) : milestone, crit, 142w, 0d
-    
-    Historical Themes Research (HA6101) : 106w, 120w
-    Essay Planning (HA6101) : 120w, 126w
-    Essay Writing Period (HA6101) : 130w, 140w
-    CHS Submission (HA6101) : milestone, crit, 140w, 0d
+  // Helper function to handle click events
+  const handleMilestoneClick = (id) => {
+    if (activeDetails === id) {
+      setActiveDetails(null);
+    } else {
+      setActiveDetails(id);
+    }
+  };
+
+  // Render a milestone block (formative or summative assessment point)
+  const Milestone = ({ id, title, type, week }) => (
+    <div 
+      className={`cursor-pointer rounded p-2 ${type === 'formative' ? 'bg-gray-200 border border-gray-400' : 'bg-yellow-300 border border-black'}`}
+      onClick={() => handleMilestoneClick(id)}
+    >
+      <div className="text-sm font-semibold">{title}</div>
+      <div className="text-xs">Week {week}</div>
+    </div>
+  );
+
+  // Render an activity block (project, research, etc.)
+  const Activity = ({ title, weeks, color = "bg-gray-100" }) => (
+    <div className={`${color} p-2 rounded border border-gray-300 mb-1`}>
+      <div className="text-sm">{title}</div>
+      <div className="text-xs">Weeks {weeks}</div>
+    </div>
+  );
+
+  return (
+    <div className="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow">
+      <h1 className="text-2xl font-bold text-center mb-6">BA (Hons) Fashion Program Timeline</h1>
+      
+      <div className="text-center mb-6">
+        <p className="mb-2">This timeline visualizes your feedback and assessment journey over the duration of the BA (Hons) Fashion Program.</p>
+        <p>It demonstrates how assessment weighting contributes to your final degree classification.</p>
+      </div>
+      
+      <div className="flex justify-center mb-6 space-x-4">
+        <div className="border-2 border-gray-300 bg-gray-50 p-2 rounded font-semibold">Year 1: Non-weighted</div>
+        <div className="border-2 border-gray-400 bg-gray-100 p-2 rounded font-semibold">Year 2: 20% weighted</div>
+        <div className="border-2 border-black bg-yellow-300 p-2 rounded font-semibold">Year 3: 80% weighted</div>
+      </div>
+      
+      <blockquote className="border-l-4 border-yellow-400 bg-gray-50 p-4 italic mb-6">
+        "Commitment to practice is the key to progress, and through failure, we often uncover the most valuable lessons that teach us resilience, and gain insights that lead to deeper understanding, growth and mastery. Use this time well."
+        <div className="mt-2 text-sm not-italic">Staff member or Fashion Designer quote</div>
+      </blockquote>
+      
+      {/* Timeline Legend */}
+      <div className="mb-6 bg-gray-50 p-4 rounded">
+        <h3 className="font-bold mb-2">Timeline Legend:</h3>
+        <div className="flex flex-col space-y-2">
+          <div className="flex items-center">
+            <div className="w-4 h-4 bg-yellow-300 border border-black mr-2"></div>
+            <span>Summative Assessment (graded)</span>
+          </div>
+          <div className="flex items-center">
+            <div className="w-4 h-4 bg-gray-200 border border-gray-400 mr-2"></div>
+            <span>Formative Feedback (development guidance)</span>
+          </div>
+          <div className="flex items-center">
+            <div className="w-4 h-4 bg-gray-100 border border-gray-300 mr-2"></div>
+            <span>Project/Activity Duration</span>
+          </div>
+        </div>
+      </div>
+      
+      {/* Active Details Panel */}
+      {activeDetails && details[activeDetails] && (
+        <div className="mb-6 bg-blue-50 p-4 rounded border border-blue-200">
+          <h3 className="font-bold text-lg mb-2">{details[activeDetails].title}</h3>
+          <p className="mb-2">{details[activeDetails].description}</p>
+          <p className="mb-2"><strong>Expectations:</strong> {details[activeDetails].expectations}</p>
+          <a 
+            href={details[activeDetails].link} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="text-blue-600 hover:underline font-semibold"
+          >
+            View detailed resources →
+          </a>
+          <button 
+            onClick={() => setActiveDetails(null)}
+            className="block mt-2 text-sm text-gray-600 hover:underline"
+          >
+            Close details
+          </button>
+        </div>
+      )}
+
+      {/* Year 1 Timeline */}
+      <div className="mb-10 border-2 border-gray-300 rounded p-4">
+        <h2 className="text-xl font-bold mb-4">YEAR 1 - Non-weighted: Exploration & Foundation</h2>
+        <p className="mb-4">This year focuses on building core skills and allows experimentation without affecting your final degree classification.</p>
+        
+        <div className="grid grid-cols-3 gap-4 mb-4">
+          <div>
+            <h3 className="font-bold mb-2">Teaching Block 1</h3>
+            <Activity title="Induction" weeks="1-2" />
+            <Activity title="Project 1 (FN4004)" weeks="3-12" />
+            <Activity title="Historical Themes Research (HA4104)" weeks="3-16" />
+            <div className="my-2">
+              <Milestone id="formative1" title="Formative Feedback" type="formative" week="9" />
+            </div>
+            <div className="my-2">
+              <Milestone id="summative1" title="Summative Assessment" type="summative" week="12" />
+            </div>
+          </div>
+          
+          <div>
+            <h3 className="font-bold mb-2">Teaching Block 2</h3>
+            <Activity title="Project 2 (FN4004)" weeks="13-22" />
+            <Activity title="Essay Planning (HA4104)" weeks="16-22" />
+            <div className="my-2">
+              <Milestone id="formative2" title="Formative Feedback" type="formative" week="20" />
+            </div>
+            <Activity title="Winter Break" weeks="22-26" color="bg-blue-50" />
+          </div>
+          
+          <div>
+            <h3 className="font-bold mb-2">Teaching Block 3</h3>
+            <Activity title="Toile Development (FN4005)" weeks="26-34" />
+            <Activity title="Essay Writing (HA4104)" weeks="26-36" />
+            <Activity title="Project 3 (FN4004)" weeks="26-38" />
+            <div className="my-2">
+              <Milestone id="summative2" title="CHS Submission" type="summative" week="36" />
+            </div>
+            <div className="my-2">
+              <Milestone id="summative3" title="Portfolio Submission" type="summative" week="38" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Year 2 Timeline */}
+      <div className="mb-10 border-2 border-gray-400 rounded p-4">
+        <h2 className="text-xl font-bold mb-4">YEAR 2 - 20% Weighted: Professional Practice</h2>
+        <p className="mb-4">This year contributes 20% to your final mark, reflecting the adoption of professional practices and industry standards.</p>
+        
+        <div className="grid grid-cols-3 gap-4 mb-4">
+          <div>
+            <h3 className="font-bold mb-2">Teaching Block 1</h3>
+            <Activity title="Project Kick-Off (FN5001)" weeks="54-62" />
+            <Activity title="Historical Research (HA5107)" weeks="54-68" />
+            <div className="my-2">
+              <Milestone id="formative5" title="Formative Feedback" type="formative" week="61" />
+            </div>
+            <div className="my-2">
+              <Milestone id="summative5" title="Project Submission" type="summative" week="64" />
+            </div>
+          </div>
+          
+          <div>
+            <h3 className="font-bold mb-2">Teaching Block 2</h3>
+            <Activity title="Major Project Phase 1" weeks="62-74" />
+            <Activity title="Essay Planning (HA5107)" weeks="68-74" />
+            <div className="my-2">
+              <Milestone id="formative6" title="Formative Review" type="formative" week="72" />
+            </div>
+            <Activity title="Winter Break" weeks="74-78" color="bg-blue-50" />
+          </div>
+          
+          <div>
+            <h3 className="font-bold mb-2">Teaching Block 3</h3>
+            <Activity title="Product Development" weeks="78-86" />
+            <Activity title="Icons & Muses" weeks="78-90" />
+            <Activity title="Essay Writing (HA5107)" weeks="78-88" />
+            <div className="my-2">
+              <Milestone id="formative7" title="Mid-Point Formative" type="formative" week="84" />
+            </div>
+            <div className="my-2">
+              <Milestone id="summative6" title="CHS Submission" type="summative" week="88" />
+            </div>
+            <div className="my-2">
+              <Milestone id="summative7" title="Final Submission" type="summative" week="90" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Year 3 Timeline */}
+      <div className="border-2 border-black bg-yellow-50 rounded p-4">
+        <h2 className="text-xl font-bold mb-4">YEAR 3 - 80% Weighted: Final Collection & Portfolio</h2>
+        <p className="mb-4">This year carries the majority of the weight at 80%, emphasizing the importance of your final portfolio and industry readiness.</p>
+        
+        <div className="grid grid-cols-3 gap-4 mb-4">
+          <div>
+            <h3 className="font-bold mb-2">Teaching Block 1</h3>
+            <Activity title="Project Kick-Off (FN6001)" weeks="106-114" />
+            <Activity title="Historical Research (HA6101)" weeks="106-120" />
+            <div className="my-2">
+              <Milestone id="formative9" title="Formative Feedback" type="formative" week="113" />
+            </div>
+            <div className="my-2">
+              <Milestone id="summative8" title="Project Submission" type="summative" week="116" />
+            </div>
+          </div>
+          
+          <div>
+            <h3 className="font-bold mb-2">Teaching Block 2</h3>
+            <Activity title="Major Project Phase 1" weeks="114-126" />
+            <Activity title="Essay Planning (HA6101)" weeks="120-126" />
+            <div className="my-2">
+              <Milestone id="formative10" title="Formative Review" type="formative" week="124" />
+            </div>
+            <Activity title="Winter Break" weeks="126-130" color="bg-blue-50" />
+          </div>
+          
+          <div>
+            <h3 className="font-bold mb-2">Teaching Block 3</h3>
+            <Activity title="Product Development" weeks="130-138" />
+            <Activity title="Portfolio Development" weeks="138-142" />
+            <Activity title="Essay Writing (HA6101)" weeks="130-140" />
+            <div className="my-2">
+              <Milestone id="summative9" title="CHS Submission" type="summative" week="140" />
+            </div>
+            <div className="my-2">
+              <Milestone id="summative10" title="Final Project Submission" type="summative" week="142" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="mt-6 text-center text-gray-600 text-sm">
+        <p>Kingston School of Art - BA (Hons) Fashion Program – Learning Outcomes, Feedback and Assessment KnowledgeBase</p>
+        <p>© 2025 Kingston University</p>
       </div>
     </div>
+  );
+};
 
-    <div class="footer">
-      <p>Kingston School of Art - BA (Hons) Fashion Program – Learning Outcomes, Feedback and Assessment KnowledgeBase</p>
-      <p>© 2025 Kingston University</p>
-    </div>
-  </div>
-  
-  <script>
-    // Initialize Mermaid after the DOM is fully loaded
-    document.addEventListener('DOMContentLoaded', function() {
-      mermaid.initialize({
-        startOnLoad: true,
-        securityLevel: 'loose',
-        gantt: {
-          titleTopMargin: 25,
-          barHeight: 20,
-          barGap: 4,
-          topPadding: 60,
-          sidePadding: 20,
-          numberSectionStyles: 3,
-          axisFormat: 'Week %W',
-          todayMarker: 'stroke:#FFED00, stroke-width: 2px, opacity: 0.5'
-        }
-      });
-    });
-  </script>
-</body>
-</html>
+export default FashionProgramTimeline;
