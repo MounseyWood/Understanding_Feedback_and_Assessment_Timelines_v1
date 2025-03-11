@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BA (Hons) Fashion Program Timeline</title>
   <style>
-    /* Base styles */
+    /* Base styles following Design School Canvas Template */
     *, *::before, *::after {
       box-sizing: border-box;
     }
@@ -47,7 +47,7 @@
       text-align: center;
     }
     
-    /* Tab navigation */
+    /* Year tabs */
     .year-tabs {
       display: flex;
       margin-bottom: 1.5rem;
@@ -69,19 +69,9 @@
       background-color: #f1f1f1;
     }
     
-    .year-tab.active-year1 {
-      background-color: #f8f9fa;
-      border-color: #adb5bd;
-    }
-    
-    .year-tab.active-year2 {
+    .year-tab.active {
       background-color: #e9ecef;
-      border-color: #6c757d;
-    }
-    
-    .year-tab.active-year3 {
-      background-color: #FFED00;
-      border-color: #000000;
+      border-color: #adb5bd;
     }
     
     /* Year sections */
@@ -121,12 +111,12 @@
     }
     
     .project-color {
-      background-color: #c7d2fe;
-      border-color: #818cf8;
+      background-color: #e9ecef;
+      border-color: #adb5bd;
     }
     
     .formative-color {
-      background-color: #fbbf24;
+      background-color: #FFED00;
       border-color: #d97706;
     }
     
@@ -136,49 +126,72 @@
     }
     
     .break-color {
-      background-color: #dbeafe;
-      border-color: #93c5fd;
+      background-color: #f1f5f9;
+      border-color: #cbd5e1;
     }
     
-    /* Detail panel */
-    .detail-panel {
-      background-color: #eff6ff;
-      padding: 1rem;
-      border-radius: 0.25rem;
-      border: 1px solid #bfdbfe;
-      margin-bottom: 1.5rem;
+    /* Modal popup */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
     }
     
-    .panel-header {
+    .modal-content {
+      background-color: white;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      max-width: 500px;
+      width: 90%;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    .modal-content.formative {
+      border-top: 5px solid #FFED00;
+    }
+    
+    .modal-content.summative {
+      border-top: 5px solid #ef4444;
+    }
+    
+    .modal-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 0.5rem;
+      margin-bottom: 1rem;
     }
     
-    .panel-title {
+    .modal-title {
       font-weight: bold;
-      font-size: 1.125rem;
+      font-size: 1.25rem;
+      margin: 0;
     }
     
     .close-button {
       background: none;
       border: none;
-      font-size: 1.25rem;
+      font-size: 1.5rem;
       cursor: pointer;
       color: #6b7280;
-    }
-    
-    .close-button:hover {
-      color: #1f2937;
+      line-height: 1;
     }
     
     .resource-link {
       display: inline-block;
-      margin-top: 0.5rem;
+      margin-top: 1rem;
       background-color: #2563eb;
       color: white;
-      padding: 0.25rem 0.75rem;
+      padding: 0.5rem 1rem;
       border-radius: 0.25rem;
       text-decoration: none;
       font-weight: 500;
@@ -195,6 +208,7 @@
       padding: 1rem;
       background-color: #f8f9fa;
       position: relative;
+      overflow-x: auto;
     }
     
     .teaching-blocks {
@@ -238,8 +252,32 @@
       margin-top: 0.25rem;
     }
     
+    .timeline-content {
+      position: relative;
+      min-height: 300px;
+    }
+    
+    .vertical-columns {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 0;
+    }
+    
+    .vertical-column {
+      position: absolute;
+      top: 0;
+      height: 100%;
+      background-color: #f1f5f9;
+      opacity: 0.7;
+      z-index: 0;
+    }
+    
     .timeline-items {
       position: relative;
+      z-index: 1;
     }
     
     .timeline-row {
@@ -262,12 +300,12 @@
     }
     
     .timeline-item.project {
-      background-color: #c7d2fe;
-      border-color: #818cf8;
+      background-color: #e9ecef;
+      border-color: #adb5bd;
     }
     
     .timeline-item.formative {
-      background-color: #fbbf24;
+      background-color: #FFED00;
       border-color: #d97706;
       height: 1.5rem;
       width: 1.5rem !important;
@@ -292,9 +330,8 @@
     }
     
     .timeline-item.break {
-      background-color: #dbeafe;
-      border-color: #93c5fd;
-      font-style: italic;
+      background-color: transparent;
+      border: none;
     }
     
     .item-label {
@@ -330,12 +367,74 @@
       font-style: normal;
     }
     
+    /* Back button */
+    .back-button {
+      display: block;
+      margin: 2rem auto 1rem;
+      padding: 0.75rem 1.5rem;
+      background-color: #FFED00;
+      color: #000;
+      border: 2px solid #000;
+      border-radius: 0.25rem;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: none;
+      text-align: center;
+      max-width: 300px;
+    }
+    
+    .back-button:hover {
+      background-color: #e6d500;
+    }
+    
     /* Footer */
     .footer {
       text-align: center;
       margin-top: 1.5rem;
       color: #6b7280;
       font-size: 0.875rem;
+    }
+    
+    /* Mobile responsiveness */
+    @media (max-width: 768px) {
+      .container {
+        padding: 10px;
+      }
+      
+      .timeline-container {
+        padding: 15px;
+      }
+      
+      .year-tabs {
+        flex-direction: column;
+      }
+      
+      .year-tab {
+        margin-bottom: 0.5rem;
+      }
+      
+      .legend {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      
+      .modal-content {
+        width: 95%;
+        padding: 1rem;
+      }
+      
+      .timeline-visualization {
+        padding: 0.5rem;
+      }
+      
+      .timeline-row {
+        margin-bottom: 2rem;
+      }
+      
+      .milestone-label {
+        top: -2.5rem;
+        left: 0 !important;
+      }
     }
   </style>
 </head>
@@ -351,7 +450,7 @@
       
       <!-- Year tabs -->
       <div class="year-tabs">
-        <button class="year-tab active-year1" id="tab-year1">Year 1: Non-weighted</button>
+        <button class="year-tab active" id="tab-year1">Year 1: Non-weighted</button>
         <button class="year-tab" id="tab-year2">Year 2: 20% weighted</button>
         <button class="year-tab" id="tab-year3">Year 3: 80% weighted</button>
       </div>
@@ -388,18 +487,8 @@
         </div>
         <div class="legend-item">
           <div class="legend-color break-color"></div>
-          <span>Break/Enrichment</span>
+          <span>Break/Enrichment Week</span>
         </div>
-      </div>
-      
-      <!-- Detail panel (hidden by default) -->
-      <div id="detail-panel" class="detail-panel" style="display: none;">
-        <div class="panel-header">
-          <div class="panel-title" id="detail-title"></div>
-          <button class="close-button" id="detail-close">✕</button>
-        </div>
-        <p id="detail-description"></p>
-        <a href="#" class="resource-link" id="detail-link" target="_blank">View Assessment Resources</a>
       </div>
       
       <!-- Timeline visualization -->
@@ -407,14 +496,21 @@
         <div class="teaching-blocks">
           <div class="block-label">Teaching Block 1</div>
           <div class="block-label">Teaching Block 2</div>
+          <div class="block-label">Teaching Block 3</div>
         </div>
         
         <div class="week-markers" id="week-markers">
           <!-- Week markers will be generated by JavaScript -->
         </div>
         
-        <div class="timeline-items" id="timeline-items">
-          <!-- Timeline items will be generated by JavaScript -->
+        <div class="timeline-content">
+          <div class="vertical-columns" id="vertical-columns">
+            <!-- Vertical columns for breaks will be generated by JavaScript -->
+          </div>
+          
+          <div class="timeline-items" id="timeline-items">
+            <!-- Timeline items will be generated by JavaScript -->
+          </div>
         </div>
       </div>
       
@@ -423,10 +519,24 @@
         <div class="quote-attribution">Staff member or Fashion Designer quote</div>
       </blockquote>
       
+      <a href="https://canvas.kingston.ac.uk/courses/32501" class="back-button">Back to Module Home Page</a>
+      
       <div class="footer">
         <p>Kingston School of Art - BA (Hons) Fashion Program – Learning Outcomes, Feedback and Assessment KnowledgeBase</p>
         <p>© 2025 Kingston University</p>
       </div>
+    </div>
+  </div>
+  
+  <!-- Modal for assessment details -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal-content" id="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modal-title"></h3>
+        <button class="close-button" id="modal-close">×</button>
+      </div>
+      <p id="modal-description"></p>
+      <a href="#" class="resource-link" id="modal-link" target="_blank">View Assessment Resources</a>
     </div>
   </div>
 
@@ -437,7 +547,7 @@
         year1: {
           title: "Year 1: Non-weighted",
           description: "Allowing for experimentation and exploration without high stakes.",
-          weeks: 40,
+          weeks: 45,
           items: [
             { id: 'induction', name: 'Induction', start: 1, duration: 2, type: 'project' },
             { id: 'project1', name: 'Project One (FN4004)', start: 3, duration: 9, type: 'project' },
@@ -447,18 +557,15 @@
             { id: 'summative1', name: 'Summative Assessment (FN4004)', start: 12, duration: 0, type: 'summative', 
               link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
               details: "Final assessment of your first project work including research, development, and outcomes." },
-            { id: 'enrichment1', name: 'TB1 Enrichment Week', start: 8, duration: 1, type: 'break' },
             { id: 'project2', name: 'Project Two (FN4004)', start: 12, duration: 10, type: 'project' },
             { id: 'formative2', name: 'Formative Feedback (FN4004)', start: 20, duration: 0, type: 'formative', 
               link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
               details: "Development feedback for your second project to help refine your direction." },
-            { id: 'winterBreak', name: 'Winter Break', start: 22, duration: 4, type: 'break' },
             { id: 'toile', name: 'Toile Development (FN4005)', start: 26, duration: 8, type: 'project' },
             { id: 'project3', name: 'Project Three (FN4004)', start: 26, duration: 12, type: 'project' },
             { id: 'formative3', name: 'Formative Feedback (FN4005)', start: 32, duration: 0, type: 'formative', 
               link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
               details: "Technical feedback on your toile development and construction techniques." },
-            { id: 'enrichment2', name: 'TB2 Enrichment Week', start: 33, duration: 1, type: 'break' },
             { id: 'portfolio', name: 'Portfolio Development (FN4005)', start: 34, duration: 4, type: 'project' },
             { id: 'summative2', name: 'Summative Submission (FN4005)', start: 38, duration: 0, type: 'summative', 
               link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
@@ -469,12 +576,18 @@
             { id: 'chsSubmission', name: 'CHS Submission (HA4104)', start: 36, duration: 0, type: 'summative', 
               link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
               details: "Final submission of your written Cultural & Historical Studies essay." },
+          ],
+          breaks: [
+            { name: 'TB1 Enrichment Week', start: 8, duration: 1 },
+            { name: 'Winter Break', start: 22, duration: 4 },
+            { name: 'TB2 Enrichment Week', start: 33, duration: 1 },
+            { name: 'Summer Break', start: 38, duration: 7 }
           ]
         },
         year2: {
           title: "Year 2: 20% weighted",
           description: "Contributes 20% to your final mark, reflecting the adoption of Professional Practice.",
-          weeks: 40,
+          weeks: 45,
           items: [
             { id: 'induction2', name: 'Induction', start: 1, duration: 2, type: 'project' },
             { id: 'project1_y2', name: 'Project One (FN5001)', start: 3, duration: 9, type: 'project' },
@@ -484,19 +597,16 @@
             { id: 'summative1_y2', name: 'Project Submission (FN5001)', start: 12, duration: 0, type: 'summative', 
               link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
               details: "Assessment of your project outcomes, contributing to your 20% Year 2 weighting." },
-            { id: 'enrichment1_y2', name: 'TB1 Enrichment Week', start: 8, duration: 1, type: 'break' },
             { id: 'designTutorials', name: 'Design Process Tutorials (FN5001)', start: 12, duration: 10, type: 'project' },
             { id: 'majorProject1', name: 'Major Project Phase 1 (FN5001)', start: 12, duration: 10, type: 'project' },
             { id: 'formativeReview', name: 'Formative Review (FN5001)', start: 20, duration: 0, type: 'formative', 
               link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
               details: "Comprehensive review of your work to date with industry feedback." },
-            { id: 'winterBreak_y2', name: 'Winter Break', start: 22, duration: 4, type: 'break' },
             { id: 'productDev', name: 'Product Development (FN5003)', start: 26, duration: 8, type: 'project' },
             { id: 'iconsMuses', name: 'Icons & Muses (FN5001)', start: 26, duration: 12, type: 'project' },
             { id: 'midPoint', name: 'Mid-Point Formative (FN5003)', start: 32, duration: 0, type: 'formative', 
               link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
               details: "Technical and creative feedback on your product development work." },
-            { id: 'enrichment2_y2', name: 'TB2 Enrichment Week', start: 33, duration: 1, type: 'break' },
             { id: 'portfolioDev_y2', name: 'Portfolio Development (FN5003)', start: 34, duration: 4, type: 'project' },
             { id: 'finalSubmission', name: 'Final Project Submission (FN5003)', start: 38, duration: 0, type: 'summative', 
               link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
@@ -507,12 +617,18 @@
             { id: 'chsSubmission_y2', name: 'CHS Submission (HA5107)', start: 36, duration: 0, type: 'summative', 
               link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
               details: "Final submission of your Year 2 Cultural & Historical Studies essay." },
+          ],
+          breaks: [
+            { name: 'TB1 Enrichment Week', start: 8, duration: 1 },
+            { name: 'Winter Break', start: 22, duration: 4 },
+            { name: 'TB2 Enrichment Week', start: 33, duration: 1 },
+            { name: 'Summer Break', start: 38, duration: 7 }
           ]
         },
         year3: {
           title: "Year 3: 80% weighted",
           description: "Carries the majority of the weight at 80%, emphasising the importance of your final year work.",
-          weeks: 40,
+          weeks: 45,
           items: [
             { id: 'induction3', name: 'Induction', start: 1, duration: 2, type: 'project' },
             { id: 'project1_y3', name: 'Project One (FN6001)', start: 3, duration: 9, type: 'project' },
@@ -522,19 +638,16 @@
             { id: 'summative1_y3', name: 'Project Submission (FN6001)', start: 12, duration: 0, type: 'summative', 
               link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
               details: "Assessment of your first final-year project, contributing to your 80% weighting." },
-            { id: 'enrichment1_y3', name: 'TB1 Enrichment Week', start: 8, duration: 1, type: 'break' },
             { id: 'designTutorials_y3', name: 'Design Process Tutorials (FN6001)', start: 12, duration: 10, type: 'project' },
             { id: 'majorProject1_y3', name: 'Major Project Phase 1 (FN6001)', start: 12, duration: 10, type: 'project' },
             { id: 'formativeReview_y3', name: 'Formative Review (FN6001)', start: 20, duration: 0, type: 'formative', 
               link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
               details: "Industry-facing review of your collection development and professional portfolio." },
-            { id: 'winterBreak_y3', name: 'Winter Break', start: 22, duration: 4, type: 'break' },
             { id: 'productDev_y3', name: 'Product Development (FN6004)', start: 26, duration: 8, type: 'project' },
             { id: 'iconsMuses_y3', name: 'Icons & Muses (FN6004)', start: 26, duration: 12, type: 'project' },
             { id: 'midPoint_y3', name: 'Mid-Point Formative (FN6004)', start: 32, duration: 0, type: 'formative', 
               link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
               details: "Final development feedback before your summative assessment." },
-            { id: 'enrichment2_y3', name: 'TB2 Enrichment Week', start: 33, duration: 1, type: 'break' },
             { id: 'portfolioDev_y3', name: 'Portfolio Development (FN6004)', start: 34, duration: 4, type: 'project' },
             { id: 'finalSubmission_y3', name: 'Final Project Submission (FN6004)', start: 38, duration: 0, type: 'summative', 
               link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
@@ -545,13 +658,18 @@
             { id: 'chsSubmission_y3', name: 'CHS Submission (HA6101)', start: 36, duration: 0, type: 'summative', 
               link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
               details: "Final submission of your Year 3 Cultural & Historical Studies dissertation." },
+          ],
+          breaks: [
+            { name: 'TB1 Enrichment Week', start: 8, duration: 1 },
+            { name: 'Winter Break', start: 22, duration: 4 },
+            { name: 'TB2 Enrichment Week', start: 33, duration: 1 },
+            { name: 'Summer Break', start: 38, duration: 7 }
           ]
         }
       };
       
       // Current active year
       let activeYear = 'year1';
-      let activeDetail = null;
       
       // DOM elements
       const tabYear1 = document.getElementById('tab-year1');
@@ -560,42 +678,53 @@
       const sectionYear1 = document.getElementById('section-year1');
       const sectionYear2 = document.getElementById('section-year2');
       const sectionYear3 = document.getElementById('section-year3');
-      const detailPanel = document.getElementById('detail-panel');
-      const detailTitle = document.getElementById('detail-title');
-      const detailDescription = document.getElementById('detail-description');
-      const detailLink = document.getElementById('detail-link');
-      const detailClose = document.getElementById('detail-close');
+      const modalOverlay = document.getElementById('modal-overlay');
+      const modalContent = document.getElementById('modal-content');
+      const modalTitle = document.getElementById('modal-title');
+      const modalDescription = document.getElementById('modal-description');
+      const modalLink = document.getElementById('modal-link');
+      const modalClose = document.getElementById('modal-close');
       const weekMarkers = document.getElementById('week-markers');
       const timelineItems = document.getElementById('timeline-items');
+      const verticalColumns = document.getElementById('vertical-columns');
       
       // Set up event listeners for tabs
       tabYear1.addEventListener('click', () => setActiveYear('year1'));
       tabYear2.addEventListener('click', () => setActiveYear('year2'));
       tabYear3.addEventListener('click', () => setActiveYear('year3'));
       
-      // Detail panel close button
-      detailClose.addEventListener('click', () => {
-        detailPanel.style.display = 'none';
-        activeDetail = null;
+      // Modal close button
+      modalClose.addEventListener('click', () => {
+        modalOverlay.style.display = 'none';
+      });
+      
+      // Close modal when clicking outside
+      modalOverlay.addEventListener('click', (e) => {
+        if (e.target === modalOverlay) {
+          modalOverlay.style.display = 'none';
+        }
+      });
+      
+      // Escape key to close modal
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modalOverlay.style.display === 'flex') {
+          modalOverlay.style.display = 'none';
+        }
       });
       
       // Set active year and update UI
       function setActiveYear(year) {
         activeYear = year;
         
-        // Update tabs
-        tabYear1.className = 'year-tab' + (year === 'year1' ? ' active-year1' : '');
-        tabYear2.className = 'year-tab' + (year === 'year2' ? ' active-year2' : '');
-        tabYear3.className = 'year-tab' + (year === 'year3' ? ' active-year3' : '');
+        // Update tabs - all with the same gray style when active
+        tabYear1.className = 'year-tab' + (year === 'year1' ? ' active' : '');
+        tabYear2.className = 'year-tab' + (year === 'year2' ? ' active' : '');
+        tabYear3.className = 'year-tab' + (year === 'year3' ? ' active' : '');
         
         // Update sections
         sectionYear1.className = 'year-section' + (year === 'year1' ? ' active' : '');
         sectionYear2.className = 'year-section' + (year === 'year2' ? ' active' : '');
         sectionYear3.className = 'year-section' + (year === 'year3' ? ' active' : '');
-        
-        // Hide detail panel
-        detailPanel.style.display = 'none';
-        activeDetail = null;
         
         // Render timeline for the active year
         renderTimeline();
@@ -635,6 +764,24 @@
         }
       }
       
+      // Render vertical columns for breaks and enrichment weeks
+      function renderVerticalColumns() {
+        verticalColumns.innerHTML = '';
+        const totalWeeks = timelineData[activeYear].weeks;
+        const breaks = timelineData[activeYear].breaks;
+        
+        breaks.forEach(breakItem => {
+          const position = calculatePosition(breakItem.start, breakItem.duration, totalWeeks);
+          const column = document.createElement('div');
+          column.className = 'vertical-column';
+          column.style.left = position.left;
+          column.style.width = position.width;
+          column.title = breakItem.name;
+          
+          verticalColumns.appendChild(column);
+        });
+      }
+      
       // Render timeline items
       function renderTimelineItems() {
         timelineItems.innerHTML = '';
@@ -660,7 +807,7 @@
             if (item.type === 'formative' || item.type === 'summative') {
               itemElement.setAttribute('data-id', item.id);
               itemElement.addEventListener('click', function() {
-                showDetail(item);
+                showModal(item);
               });
               
               // Add label
@@ -683,21 +830,23 @@
         }
       }
       
-      // Show detail panel for an item
-      function showDetail(item) {
-        activeDetail = item.id;
-        detailTitle.textContent = item.name;
-        detailDescription.textContent = item.details;
-        detailLink.href = item.link;
-        detailPanel.style.display = 'block';
+      // Show modal for an item
+      function showModal(item) {
+        modalTitle.textContent = item.name;
+        modalDescription.textContent = item.details;
+        modalLink.href = item.link;
         
-        // Scroll to the detail panel
-        detailPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        // Set the modal type to match the item type
+        modalContent.className = 'modal-content ' + item.type;
+        
+        // Display the modal
+        modalOverlay.style.display = 'flex';
       }
       
       // Render the full timeline
       function renderTimeline() {
         renderWeekMarkers();
+        renderVerticalColumns();
         renderTimelineItems();
       }
       
