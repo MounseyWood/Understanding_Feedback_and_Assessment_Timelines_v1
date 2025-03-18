@@ -924,20 +924,20 @@
           teachingWeeks[i] = `TW${i}`;
         }
         
-        // Winter Break: Weeks 13-15 have no teaching week numbers
-        teachingWeeks[13] = "Break";
-        teachingWeeks[14] = "Break";
-        teachingWeeks[15] = "Break";
+        // Winter Break: Weeks 13-15 have no teaching week numbers - don't show Break text
+        teachingWeeks[13] = "";
+        teachingWeeks[14] = "";
+        teachingWeeks[15] = "";
         
         // TB2: Weeks 16-27 are TW13-TW24
         for (let i = 16, tw = 13; i <= 27; i++, tw++) {
           teachingWeeks[i] = `TW${tw}`;
         }
         
-        // Spring Break: Weeks 28-30 have no teaching week numbers
-        teachingWeeks[28] = "Break";
-        teachingWeeks[29] = "Break";
-        teachingWeeks[30] = "Break";
+        // Spring Break: Weeks 28-30 have no teaching week numbers - don't show Break text
+        teachingWeeks[28] = "";
+        teachingWeeks[29] = "";
+        teachingWeeks[30] = "";
         
         // TB3: Weeks 31-40 are TW25-TW34
         for (let i = 31, tw = 25; i <= 40; i++, tw++) {
@@ -945,8 +945,8 @@
         }
         
         // Display week markers at key points and teaching blocks
-        // Add TW18 (week 21) explicitly to show Enrichment Week 2
-        const markerWeeks = [0, 1, 6, 12, 13, 16, 21, 24, 27, 28, 31, 40];
+        // Remove week 21 (TW18) marker to reduce crowding
+        const markerWeeks = [0, 1, 6, 12, 13, 16, 24, 27, 28, 31, 40];
         
         for (let i of markerWeeks) {
           const position = (i / totalWeeks) * 100;
@@ -1092,10 +1092,10 @@
         
         // Use exact week calculations to ensure accurate widths
         
-        // Induction: Week 0
+        // Induction: Week 0 - remove text to avoid crowding
         const induction = document.createElement('div');
         induction.className = 'block-label';
-        induction.textContent = 'Induction (TW0)';
+        induction.textContent = ''; // Remove text as it's too crowded
         induction.style.width = `${(1 / totalWeeks) * 100}%`;
         teachingBlocks.appendChild(induction);
         
