@@ -234,7 +234,7 @@
     .timeline-visualization {
       border: 1px solid #dee2e6;
       border-radius: 0.5rem;
-      padding: 0.75rem; /* Reduced padding to reduce horizontal spacing */
+      padding: 0.5rem; /* Reduced from 0.75rem to reduce horizontal spacing */
       background-color: #f8f9fa;
       position: relative;
       overflow-x: auto;
@@ -951,7 +951,7 @@
         }
         
         // Display week markers at key points and teaching blocks
-        // Include TW18 (week 21) and remove TW21 (week 24)
+        // Include TW18 (week 21) marker
         const markerWeeks = [0, 1, 6, 12, 13, 16, 21, 27, 28, 31, 40];
         
         for (let i of markerWeeks) {
@@ -960,17 +960,31 @@
           marker.className = 'week-marker';
           marker.style.left = `${position}%`;
           
-          const line = document.createElement('div');
-          line.className = 'week-marker-line';
+          // Special handling for TW12 and TW24 - no lines, just text that's right-aligned to the break
+          if (i === 12 || i === 27) {
+            const label = document.createElement('div');
+            label.className = 'week-marker-label';
+            label.textContent = teachingWeeks[i];
+            label.style.position = 'absolute';
+            label.style.right = '2px'; // Right-align to just before the break
+            label.style.textAlign = 'right';
+            
+            marker.appendChild(label);
+          } else {
+            const line = document.createElement('div');
+            line.className = 'week-marker-line';
+            
+            const label = document.createElement('div');
+            label.className = 'week-marker-label';
+            label.textContent = teachingWeeks[i];
+            
+            marker.appendChild(line);
+            marker.appendChild(label);
+          }
           
-          const label = document.createElement('div');
-          label.className = 'week-marker-label';
-          label.textContent = teachingWeeks[i];
-          
-          marker.appendChild(line);
-          marker.appendChild(label);
           weekMarkers.appendChild(marker);
         }
+      }
       }
       
       // Render vertical columns for breaks and enrichment weeks with distinction
