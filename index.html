@@ -144,8 +144,8 @@
     
     /* Enrichment week color */
     .enrichment-color {
-      background-color: #f8d7da;
-      border-color: #dc3545;
+      background-color: #e9ecef;
+      border-color: #ced4da;
     }
     
     /* Modal popup */
@@ -272,7 +272,7 @@
     /* Enrichment Week spacer styling */
     .enrichment-spacer {
       height: 2rem;
-      background-color: #f8d7da; /* Light pink for enrichment weeks */
+      background-color: #e9ecef; /* Light gray for enrichment weeks */
       opacity: 0.6;
       border: 1px solid #dee2e6;
     }
@@ -330,7 +330,7 @@
     }
     
     .enrichment-column {
-      background-color: #f8d7da; /* Light pink for enrichment weeks */
+      background-color: #e9ecef; /* Light gray for enrichment weeks */
       opacity: 0.6;
     }
     
@@ -908,13 +908,46 @@
         };
       }
       
-      // Render week markers
+      // Render week markers with teaching week numbers
       function renderWeekMarkers() {
         weekMarkers.innerHTML = '';
         const totalWeeks = timelineData[activeYear].weeks;
         
-        // Display week markers at regular intervals (every 5 weeks)
-        for (let i = 0; i <= totalWeeks; i += 5) {
+        // Create an array to map absolute weeks to teaching weeks
+        const teachingWeeks = [];
+        
+        // Induction is Week 0 (TW0)
+        teachingWeeks[0] = "TW0";
+        
+        // TB1: Weeks 1-12 are TW1-TW12
+        for (let i = 1; i <= 12; i++) {
+          teachingWeeks[i] = `TW${i}`;
+        }
+        
+        // Winter Break: Weeks 13-15 have no teaching week numbers
+        teachingWeeks[13] = "Break";
+        teachingWeeks[14] = "Break";
+        teachingWeeks[15] = "Break";
+        
+        // TB2: Weeks 16-24 are TW13-TW21
+        for (let i = 16, tw = 13; i <= 24; i++, tw++) {
+          teachingWeeks[i] = `TW${tw}`;
+        }
+        
+        // Spring Break: Weeks 25-27 have no teaching week numbers
+        teachingWeeks[25] = "Break";
+        teachingWeeks[26] = "Break";
+        teachingWeeks[27] = "Break";
+        
+        // TB3: Weeks 28-37 are TW22-TW31
+        for (let i = 28, tw = 22; i <= 37; i++, tw++) {
+          teachingWeeks[i] = `TW${tw}`;
+        }
+        
+        // Display week markers at key points and teaching blocks
+        const markerWeeks = [0, 1, 6, 12, 13, 16, 18, 24, 25, 28, 37];
+        
+        for (let i of markerWeeks) {
           const position = (i / totalWeeks) * 100;
           const marker = document.createElement('div');
           marker.className = 'week-marker';
@@ -925,7 +958,7 @@
           
           const label = document.createElement('div');
           label.className = 'week-marker-label';
-          label.textContent = `Week ${i}`;
+          label.textContent = teachingWeeks[i];
           
           marker.appendChild(line);
           marker.appendChild(label);
@@ -962,8 +995,19 @@
           column.className = 'vertical-column enrichment-column';
           column.style.left = position.left;
           column.style.width = position.width;
-          column.title = enrichmentWeek.name;
           
+          // Create a better title that includes the teaching week number
+          let twLabel = "";
+          if (enrichmentWeek.start === 6) {
+            twLabel = "Enrichment Week (TB1/TW6)";
+          } else if (enrichmentWeek.start === 18) {
+            // This is 3 weeks into TB2, so it's TW15 (TB2 starts at TW13)
+            twLabel = "Enrichment Week (TB2/TW15)";
+          } else {
+            twLabel = enrichmentWeek.name;
+          }
+          
+          column.title = twLabel;
           verticalColumns.appendChild(column);
         });
       }
@@ -1041,17 +1085,19 @@
         // Clear existing content
         teachingBlocks.innerHTML = '';
         
+        // Use exact week calculations to ensure accurate widths
+        
         // Induction: Week 0
         const induction = document.createElement('div');
         induction.className = 'block-label';
-        induction.textContent = 'Induction';
+        induction.textContent = 'Induction (TW0)';
         induction.style.width = `${(1 / totalWeeks) * 100}%`;
         teachingBlocks.appendChild(induction);
         
-        // TB1: Weeks 1-12 (includes EW1 at week 6)
+        // TB1: Weeks 1-12 (includes EW1 at week 6) - TW1-TW12
         const block1 = document.createElement('div');
         block1.className = 'block-label';
-        block1.textContent = 'Teaching Block 1';
+        block1.textContent = 'Teaching Block 1 (TW1-12)';
         block1.style.width = `${(12 / totalWeeks) * 100}%`;
         teachingBlocks.appendChild(block1);
         
@@ -1062,11 +1108,13 @@
         winterBreakSpacer.style.width = `${(3 / totalWeeks) * 100}%`;
         teachingBlocks.appendChild(winterBreakSpacer);
         
-        // TB2: Weeks 16-24 (includes EW2 at week 18)
+        // TB2: Weeks 16-24 (includes EW2 at week 18) - TW13-TW21 (9 weeks)
         const block2 = document.createElement('div');
         block2.className = 'block-label';
-        block2.textContent = 'Teaching Block 2';
-        block2.style.width = `${(9 / totalWeeks) * 100}%`;
+        block2.textContent = 'Teaching Block 2 (TW13-21)';
+        // Ensure TB2 is exactly 9 weeks wide, to match TB1's 12-week proportion
+        const tb2Width = (9 / totalWeeks) * 100;
+        block2.style.width = `${tb2Width}%`;
         teachingBlocks.appendChild(block2);
         
         // Spring Break: Weeks 25-27 (3 weeks)
@@ -1076,10 +1124,10 @@
         springBreakSpacer.style.width = `${(3 / totalWeeks) * 100}%`;
         teachingBlocks.appendChild(springBreakSpacer);
         
-        // TB3: Weeks 28-37 (10 weeks, no enrichment week)
+        // TB3: Weeks 28-37 (10 weeks, no enrichment week) - TW22-TW31
         const block3 = document.createElement('div');
         block3.className = 'block-label';
-        block3.textContent = 'Teaching Block 3';
+        block3.textContent = 'Teaching Block 3 (TW22-31)';
         block3.style.width = `${(10 / totalWeeks) * 100}%`;
         teachingBlocks.appendChild(block3);
       }
