@@ -708,15 +708,15 @@
               details: "Mid-project feedback to guide your development process. This is an opportunity to receive constructive critique on your work in progress.<br><br><span class='expectations-text'>Expectations:</span> Bring your sketchbook, initial designs, and research materials. Be prepared to discuss your concept development and receive peer feedback.<br><br><span class='always-refer-text'>Always refer to the project brief for definitive guidance and expectations.</span>" },
             { id: 'winterBreak', name: 'Winter Break', start: 13, duration: 3, type: 'project' },
             { id: 'project3', name: 'Project Three (FN4004)', start: 16, duration: 2, type: 'project' },
-            { id: 'formative3', name: 'Formative Feedback (FN4004)', start: 18, duration: 0, type: 'formative', 
+            { id: 'formative3', name: 'Formative Feedback (FN4004)', start: 20, duration: 0, type: 'formative', 
               link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
               details: "Development feedback for your project to help refine your direction.<br><br><span class='expectations-text'>Expectations:</span> Bring your design development work and be prepared to discuss your progress and challenges.<br><br><span class='always-refer-text'>Always refer to the project brief for definitive guidance and expectations.</span>" },
-            { id: 'enrichment2', name: 'Enrichment Week', start: 18, duration: 1, type: 'project' },
-            { id: 'project4', name: 'Project Four (FN4004)', start: 19, duration: 5, type: 'project' },
-            { id: 'formative4', name: 'Formative Feedback (FN4004)', start: 23, duration: 0, type: 'formative', 
+            { id: 'enrichment2', name: 'Enrichment Week', start: 21, duration: 1, type: 'project' }, // Updated to week 21 (TW18)
+            { id: 'project4', name: 'Project Four (FN4004)', start: 22, duration: 5, type: 'project' }, // Updated start to after EW2
+            { id: 'formative4', name: 'Formative Feedback (FN4004)', start: 26, duration: 0, type: 'formative', 
               link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
               details: "Technical feedback on your toile development and construction techniques.<br><br><span class='expectations-text'>Expectations:</span> Present your toile and technical samples. Be prepared to discuss construction decisions and technical challenges.<br><br><span class='always-refer-text'>Always refer to the project brief for definitive guidance and expectations.</span>" },
-            { id: 'summative2', name: 'Summative Assessment Submission(FN4004)', start: 24, duration: 0, type: 'summative', 
+            { id: 'summative2', name: 'Summative Assessment Submission(FN4004)', start: 27, duration: 0, type: 'summative', 
               link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
               details: "Final assessment of your technical development work.<br><br><span class='expectations-text'>Expectations:</span> Submit all required technical samples, toiles, and documentation as specified in the brief.<br><br><span class='always-refer-text'>Always refer to the project brief for definitive guidance and expectations.</span>" },
             { id: 'springBreak', name: 'Spring Break', start: 28, duration: 3, type: 'project' }, // Updated position
@@ -945,7 +945,8 @@
         }
         
         // Display week markers at key points and teaching blocks
-        const markerWeeks = [0, 1, 6, 12, 13, 16, 18, 24, 27, 28, 31, 40];
+        // Add TW18 (week 21) explicitly to show Enrichment Week 2
+        const markerWeeks = [0, 1, 6, 12, 13, 16, 21, 24, 27, 28, 31, 40];
         
         for (let i of markerWeeks) {
           const position = (i / totalWeeks) * 100;
@@ -973,8 +974,8 @@
         const breaks = [
           { name: 'Enrichment Week (TB1)', start: 6, duration: 1 },
           { name: 'Winter Break', start: 13, duration: 3 },
-          { name: 'Enrichment Week (TB2)', start: 18, duration: 1 },
-          { name: 'Spring Break', start: 28, duration: 3 } // Updated to week 28 for correct TB2 length
+          { name: 'Enrichment Week (TB2)', start: 21, duration: 1 }, // Updated to week 21 which corresponds to TW18
+          { name: 'Spring Break', start: 28, duration: 3 }
         ];
         
         // Separate actual breaks from enrichment weeks for visual distinction
@@ -1005,9 +1006,8 @@
           let twLabel = "";
           if (enrichmentWeek.start === 6) {
             twLabel = "Enrichment Week (TB1/TW6)";
-          } else if (enrichmentWeek.start === 18) {
-            // This is 3 weeks into TB2, so it's TW15 (TB2 starts at TW13)
-            twLabel = "Enrichment Week (TB2/TW15)";
+          } else if (enrichmentWeek.start === 21) {
+            twLabel = "Enrichment Week (TB2/TW18)";
           } else {
             twLabel = enrichmentWeek.name;
           }
