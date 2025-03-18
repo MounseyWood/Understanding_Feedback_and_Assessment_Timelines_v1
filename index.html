@@ -691,7 +691,7 @@
         year1: {
           title: "Year 1: Non-weighted",
           description: "Allowing for experimentation and exploration without high stakes.",
-          weeks: 38, // Total weeks (0-37) including induction, teaching blocks, and breaks
+          weeks: 41, // Updated to 41 total weeks to accommodate full academic year
           items: [
             { id: 'induction', name: 'Induction', start: 0, duration: 1, type: 'project' },
             { id: 'project1', name: 'Project One (FN4004)', start: 1, duration: 5, type: 'project' },
@@ -719,15 +719,15 @@
             { id: 'summative2', name: 'Summative Assessment Submission(FN4004)', start: 24, duration: 0, type: 'summative', 
               link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
               details: "Final assessment of your technical development work.<br><br><span class='expectations-text'>Expectations:</span> Submit all required technical samples, toiles, and documentation as specified in the brief.<br><br><span class='always-refer-text'>Always refer to the project brief for definitive guidance and expectations.</span>" },
-            { id: 'springBreak', name: 'Spring Break', start: 25, duration: 3, type: 'project' },
-            { id: 'portfolio', name: 'Portfolio Development (FN4005)', start: 28, duration: 9, type: 'project' },
+            { id: 'springBreak', name: 'Spring Break', start: 28, duration: 3, type: 'project' }, // Updated position
+            { id: 'portfolio', name: 'Portfolio Development (FN4005)', start: 31, duration: 9, type: 'project' }, // Updated position
             { id: 'historical', name: 'Historical Themes Research (HA4104)', start: 1, duration: 12, type: 'project' },
             { id: 'essayPlanning', name: 'Essay Planning (HA4104)', start: 16, duration: 6, type: 'project' },
             { id: 'essayWriting', name: 'Essay Writing Period (HA4104)', start: 22, duration: 6, type: 'project' },
-            { id: 'finalSubmission', name: 'Final Submissions', start: 37, duration: 0, type: 'summative', 
+            { id: 'finalSubmission', name: 'Final Submissions', start: 40, duration: 0, type: 'summative', // Updated position
               link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
               details: "Final portfolio assessment including all year's work.<br><br><span class='expectations-text'>Expectations:</span> Submit a comprehensive portfolio demonstrating your technical, creative, and academic development throughout the year.<br><br><span class='always-refer-text'>Always refer to the project brief for definitive guidance and expectations.</span>" },
-            { id: 'chsSubmission', name: 'CHS Submission (HA4104)', start: 28, duration: 0, type: 'summative', 
+            { id: 'chsSubmission', name: 'CHS Submission (HA4104)', start: 31, duration: 0, type: 'summative', // Updated position
               link: "https://canvas.kingston.ac.uk/courses/32501/pages/placeholder",
               details: "Final submission of your written Cultural & Historical Studies essay.<br><br><span class='expectations-text'>Expectations:</span> Submit a properly formatted academic essay addressing the assigned topic. Ensure proper citations, bibliography, and adherence to word count.<br><br><span class='always-refer-text'>Always refer to the project brief for definitive guidance and expectations.</span>" },
           ],
@@ -735,7 +735,7 @@
             { name: 'Enrichment Week (TB1)', start: 6, duration: 1 },
             { name: 'Winter Break', start: 13, duration: 3 },
             { name: 'Enrichment Week (TB2)', start: 18, duration: 1 },
-            { name: 'Spring Break', start: 25, duration: 3 }
+            { name: 'Spring Break', start: 28, duration: 3 } // Updated position
           ]
         },
         year2: {
@@ -929,23 +929,23 @@
         teachingWeeks[14] = "Break";
         teachingWeeks[15] = "Break";
         
-        // TB2: Weeks 16-24 are TW13-TW21
-        for (let i = 16, tw = 13; i <= 24; i++, tw++) {
+        // TB2: Weeks 16-27 are TW13-TW24
+        for (let i = 16, tw = 13; i <= 27; i++, tw++) {
           teachingWeeks[i] = `TW${tw}`;
         }
         
-        // Spring Break: Weeks 25-27 have no teaching week numbers
-        teachingWeeks[25] = "Break";
-        teachingWeeks[26] = "Break";
-        teachingWeeks[27] = "Break";
+        // Spring Break: Weeks 28-30 have no teaching week numbers
+        teachingWeeks[28] = "Break";
+        teachingWeeks[29] = "Break";
+        teachingWeeks[30] = "Break";
         
-        // TB3: Weeks 28-37 are TW22-TW31
-        for (let i = 28, tw = 22; i <= 37; i++, tw++) {
+        // TB3: Weeks 31-40 are TW25-TW34
+        for (let i = 31, tw = 25; i <= 40; i++, tw++) {
           teachingWeeks[i] = `TW${tw}`;
         }
         
         // Display week markers at key points and teaching blocks
-        const markerWeeks = [0, 1, 6, 12, 13, 16, 18, 24, 25, 28, 37];
+        const markerWeeks = [0, 1, 6, 12, 13, 16, 18, 24, 27, 28, 31, 40];
         
         for (let i of markerWeeks) {
           const position = (i / totalWeeks) * 100;
@@ -970,7 +970,12 @@
       function renderVerticalColumns() {
         verticalColumns.innerHTML = '';
         const totalWeeks = timelineData[activeYear].weeks;
-        const breaks = timelineData[activeYear].breaks;
+        const breaks = [
+          { name: 'Enrichment Week (TB1)', start: 6, duration: 1 },
+          { name: 'Winter Break', start: 13, duration: 3 },
+          { name: 'Enrichment Week (TB2)', start: 18, duration: 1 },
+          { name: 'Spring Break', start: 28, duration: 3 } // Updated to week 28 for correct TB2 length
+        ];
         
         // Separate actual breaks from enrichment weeks for visual distinction
         const mainBreaks = breaks.filter(b => b.name.includes('Winter') || b.name.includes('Spring'));
@@ -1108,26 +1113,26 @@
         winterBreakSpacer.style.width = `${(3 / totalWeeks) * 100}%`;
         teachingBlocks.appendChild(winterBreakSpacer);
         
-        // TB2: Weeks 16-24 (includes EW2 at week 18) - TW13-TW21 (9 weeks)
+        // TB2: Weeks 16-27 (includes EW2 at week 18) - TW13-TW24 (12 weeks)
         const block2 = document.createElement('div');
         block2.className = 'block-label';
-        block2.textContent = 'Teaching Block 2 (TW13-21)';
-        // Ensure TB2 is exactly 9 weeks wide, to match TB1's 12-week proportion
-        const tb2Width = (9 / totalWeeks) * 100;
+        block2.textContent = 'Teaching Block 2 (TW13-24)';
+        // Ensure TB2 is exactly 12 weeks wide, same as TB1
+        const tb2Width = (12 / totalWeeks) * 100;
         block2.style.width = `${tb2Width}%`;
         teachingBlocks.appendChild(block2);
         
-        // Spring Break: Weeks 25-27 (3 weeks)
+        // Spring Break: Weeks 28-30 (3 weeks)
         const springBreakSpacer = document.createElement('div');
         springBreakSpacer.className = 'break-spacer';
         springBreakSpacer.title = 'Spring Break';
         springBreakSpacer.style.width = `${(3 / totalWeeks) * 100}%`;
         teachingBlocks.appendChild(springBreakSpacer);
         
-        // TB3: Weeks 28-37 (10 weeks, no enrichment week) - TW22-TW31
+        // TB3: Weeks 31-40 (10 weeks, no enrichment week) - TW25-TW34
         const block3 = document.createElement('div');
         block3.className = 'block-label';
-        block3.textContent = 'Teaching Block 3 (TW22-31)';
+        block3.textContent = 'Teaching Block 3 (TW25-34)';
         block3.style.width = `${(10 / totalWeeks) * 100}%`;
         teachingBlocks.appendChild(block3);
       }
